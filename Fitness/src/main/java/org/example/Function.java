@@ -5,7 +5,8 @@ import java.util.*;
 
 public class Function {
 
-    private static final String ACTIVE = ",Active";
+    private static final String ERROR_WRITING_TO_FILE = "Error writing to file: ";
+	private static final String ACTIVE = ",Active";
 	private static final String INVALID_CHOICE_TRY_AGAIN = "Invalid choice. Try again.";
 	private static final String APPROVE = "approve";
 	private static final String RETURNING_TO_PREVIOUS_MENU = "Returning to previous menu...";
@@ -92,7 +93,7 @@ public class Function {
             writer.write(data);
             writer.newLine();
         } catch (IOException e) {
-            printing.printError("Error writing to file: " + e.getMessage());
+            printing.printError(ERROR_WRITING_TO_FILE + e.getMessage());
             throw e;
         }
     }
@@ -1029,7 +1030,7 @@ public class Function {
 	        }
 	        printing.printSomething("Content with ID " + contentId + " has been deleted successfully.");
 	    } catch (IOException e) {
-	        printing.printError("Error writing to file: " + e.getMessage());
+	        printing.printError(ERROR_WRITING_TO_FILE + e.getMessage());
 	    }
 	}
 
@@ -1281,7 +1282,7 @@ public class Function {
             writer.write(data);
             writer.newLine();
         } catch (IOException e) {
-            printing.printError("Error writing to file: " + e.getMessage());
+            printing.printError(ERROR_WRITING_TO_FILE + e.getMessage());
             throw e; // Re-throw to handle upstream
         }
     }
