@@ -1,0 +1,2 @@
+prim,50/mo,monthly,fittness,Active
+yoga,50/mo,monthly,fittnes,Active

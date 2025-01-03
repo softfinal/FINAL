@@ -1,0 +1,13 @@
+201,Basic Plan
+202,Premium Plan
+203,Standard Plan
+204,Premium Plan
+205,Basic Plan
+206,Standard Plan
+prim,50/mo,yearly,jdijidf,rfj,Active
+yoga,50/mo,monthly,axjsxn,xsnjxn,Active
+sjs,jsjs,jsjs,sjsj,Active
+Basic,50/mo,Monthly,Advanced Features,Inactive,Active
+Basic,50/mo,Monthly,Premium Features,Active
+lal,lal,lal,ala,Active
+youga,50/mo,monthly,ffff,Active

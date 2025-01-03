@@ -1,0 +1,5 @@
+Yoga Basics,Active
+Advanced Yoga,Completed
+Strength Training,Active
+Cardio Blast,Completed
+Pilates for Beginners,Active

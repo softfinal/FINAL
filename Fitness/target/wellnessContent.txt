@@ -1,0 +1,5 @@
+1,Yoga for Beginners,John Doe,Article,Approved
+2,5-Minute Meditation Tips,Jane Smith,Tip,Rejected
+3,Healthy Smoothie Recipes,Emily Johnson,Recipe,Approved
+4,Advanced Yoga Techniques,Michael Brown,Article,Approved
+5,Stretching Basics,Linda White,Tip,Rejected

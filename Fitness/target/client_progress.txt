@@ -1,0 +1,5 @@
+201,Yoga Basics,50%
+202,Advanced Yoga,100%
+203,Strength Training,30%
+204,Cardio Blast,100%
+205,Pilates for Beginners,75%

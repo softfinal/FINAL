@@ -1,0 +1,5 @@
+301,John Doe,johndoe@example.com,555-1234,Yoga Basics,Approved
+302,Jane Smith,janesmith@example.com,555-5678,Strength Training,Approved
+303,Mike Johnson,mikej@example.com,555-9012,Pilates for Beginners,Approved
+304,Linda Brown,lindab@example.com,555-3456,Cardio Blast,Pending Approval
+488,,,,,Pending Approval

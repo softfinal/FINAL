@@ -1,0 +1,4 @@
+1,The Benefits of Yoga,John Doe,http://example.com/yoga-article,Approved
+2,CrossFit Training,Jane Smith,http://example.com/crossfit-article,Approved
+3,Strength Training Basics,Jim Beam,http://example.com/strength-article,Approved
+4,Healthy Eating,Lucy Hall,http://example.com/healthy-eating-article,Approved

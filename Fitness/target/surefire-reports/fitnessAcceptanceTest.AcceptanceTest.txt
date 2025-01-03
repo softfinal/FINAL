@@ -1,0 +1,2082 @@
+-------------------------------------------------------------------------------
+Test set: fitnessAcceptanceTest.AcceptanceTest
+-------------------------------------------------------------------------------
+Tests run: 79, Failures: 0, Errors: 77, Skipped: 0, Time elapsed: 5.046 s <<< FAILURE! - in fitnessAcceptanceTest.AcceptanceTest
+Account Management.Create a new client profile with personal details  Time elapsed: 0.504 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I create a profile with my personal details including age and fitness goals")
+public void iCreateAProfileWithMyPersonalDetailsIncludingAgeAndFitnessGoals() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my personal details should be saved successfully in my profile")
+public void myPersonalDetailsShouldBeSavedSuccessfullyInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Update personal details in my profile  Time elapsed: 0.029 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update my personal details such as age and fitness goals")
+public void iUpdateMyPersonalDetailsSuchAsAgeAndFitnessGoals() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my updated personal details should be saved successfully in my profile")
+public void myUpdatedPersonalDetailsShouldBeSavedSuccessfullyInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Set dietary preferences in my profile  Time elapsed: 0.031 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I set my dietary preferences or restrictions \\(e.g., vegetarian, gluten-free)")
+public void iSetMyDietaryPreferencesOrRestrictionsEGVegetarianGlutenFree() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my dietary preferences should be saved successfully in my profile")
+public void myDietaryPreferencesShouldBeSavedSuccessfullyInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Edit dietary preferences or restrictions  Time elapsed: 0.033 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I edit my dietary preferences or restrictions \\(e.g., add lactose intolerance)")
+public void iEditMyDietaryPreferencesOrRestrictionsEGAddLactoseIntolerance() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my edited dietary preferences should be updated successfully in my profile")
+public void myEditedDietaryPreferencesShouldBeUpdatedSuccessfullyInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.View personal details and dietary preferences  Time elapsed: 0.021 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view my profile")
+public void iViewMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to see my personal details, fitness goals, and dietary preferences")
+public void iShouldBeAbleToSeeMyPersonalDetailsFitnessGoalsAndDietaryPreferences() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Attempt to create a profile with invalid details  Time elapsed: 0.031 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attempt to create a profile with invalid details such as age = {string}")
+public void iAttemptToCreateAProfileWithInvalidDetailsSuchAsAge(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see an error message indicating invalid input")
+public void iShouldSeeAnErrorMessageIndicatingInvalidInput() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my profile should not be saved")
+public void myProfileShouldNotBeSaved() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Attempt to create a profile with missing mandatory details  Time elapsed: 0.019 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attempt to create a profile without providing my age")
+public void iAttemptToCreateAProfileWithoutProvidingMyAge() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see an error message indicating that age is required")
+public void iShouldSeeAnErrorMessageIndicatingThatAgeIsRequired() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my profile should not be saved")
+public void myProfileShouldNotBeSaved() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Delete my profile  Time elapsed: 0.022 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I choose to delete my profile")
+public void iChooseToDeleteMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my profile should be removed from the system")
+public void myProfileShouldBeRemovedFromTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should no longer be able to access my account")
+public void iShouldNoLongerBeAbleToAccessMyAccount() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Account Management.Unauthorized access to another client's profile  Time elapsed: 0.028 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attempt to access another client's profile")
+public void iAttemptToAccessAnotherClientSProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive an error message indicating insufficient permissions")
+public void iShouldReceiveAnErrorMessageIndicatingInsufficientPermissions() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should not be able to view or edit their profile")
+public void iShouldNotBeAbleToViewOrEditTheirProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Approve New Instructor Registrations.Approve New Instructor  Time elapsed: 0.029 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("there is a pending instructor registration")
+public void thereIsAPendingInstructorRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I review the registration details")
+public void iReviewTheRegistrationDetails() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I approve the new instructor registration")
+public void iApproveTheNewInstructorRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the instructor should be added to the system as an active user")
+public void theInstructorShouldBeAddedToTheSystemAsAnActiveUser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a success message confirming the approval")
+public void iShouldSeeASuccessMessageConfirmingTheApproval() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Approve New Instructor Registrations.Reject New Instructor  Time elapsed: 0.031 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("there is a pending instructor registration")
+public void thereIsAPendingInstructorRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I review the registration details")
+public void iReviewTheRegistrationDetails() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I reject the new instructor registration")
+public void iRejectTheNewInstructorRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the instructor should not be added to the system")
+public void theInstructorShouldNotBeAddedToTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a rejection message confirming the action")
+public void iShouldSeeARejectionMessageConfirmingTheAction() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Approve New Instructor Registrations.View Pending Instructor Registrations  Time elapsed: 0.025 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I navigate to the {string} section")
+public void iNavigateToTheSection(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of all pending instructor registrations")
+public void iShouldSeeAListOfAllPendingInstructorRegistrations() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to review the details of each registration")
+public void iShouldBeAbleToReviewTheDetailsOfEachRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Approve New Instructor Registrations.Notify Instructor After Approval  Time elapsed: 0.029 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I approve a new instructor registration")
+public void iApproveANewInstructorRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the registration is approved")
+public void theRegistrationIsApproved() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the instructor should receive a notification email confirming their approval")
+public void theInstructorShouldReceiveANotificationEmailConfirmingTheirApproval() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message confirming the email has been sent")
+public void iShouldSeeAMessageConfirmingTheEmailHasBeenSent() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Approve New Instructor Registrations.Notify Instructor After Rejection  Time elapsed: 0.021 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I reject a new instructor registration")
+public void iRejectANewInstructorRegistration() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the registration is rejected")
+public void theRegistrationIsRejected() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the instructor should receive a notification email about the rejection")
+public void theInstructorShouldReceiveANotificationEmailAboutTheRejection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message confirming the rejection email has been sent")
+public void iShouldSeeAMessageConfirmingTheRejectionEmailHasBeenSent() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Content Management.Approve a Submitted Fitness Tip  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I approve a submitted fitness tip titled {string}")
+public void iApproveASubmittedFitnessTipTitled(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the tip {string} should be publicly visible on the platform")
+public void theTipShouldBePubliclyVisibleOnThePlatform(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Content Management.Reject a Submitted Fitness Tip  Time elapsed: 0.024 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I reject a submitted fitness tip titled {string} with reason {string}")
+public void iRejectASubmittedFitnessTipTitledWithReason(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the submitter should receive a notification {string}")
+public void theSubmitterShouldReceiveANotification(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the tip {string} should not be publicly visible")
+public void theTipShouldNotBePubliclyVisible(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Content Management.Delete a Publicly Visible Fitness Tip  Time elapsed: 0.022 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("the fitness tip {string} is publicly visible")
+public void theFitnessTipIsPubliclyVisible(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I delete the fitness tip {string}")
+public void iDeleteTheFitnessTip(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the tip {string} should no longer be visible on the platform")
+public void theTipShouldNoLongerBeVisibleOnThePlatform(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Content Management.View Feedback for a Fitness Tip  Time elapsed: 0.017 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view feedback for the fitness tip titled {string}")
+public void iViewFeedbackForTheFitnessTipTitled(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see all user comments and ratings for {string}")
+public void iShouldSeeAllUserCommentsAndRatingsFor(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Content Management.Remove Inappropriate Feedback  Time elapsed: 0.019 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("there is a feedback comment {string} on the fitness tip titled {string}")
+public void thereIsAFeedbackCommentOnTheFitnessTipTitled(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I remove the inappropriate feedback on {string}")
+public void iRemoveTheInappropriateFeedbackOn(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the feedback should no longer be visible under the {string} tip")
+public void theFeedbackShouldNoLongerBeVisibleUnderTheTip(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Content Management.Respond to a Feedback Question  Time elapsed: 0.019 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("there is a feedback question {string} on the fitness tip {string}")
+public void thereIsAFeedbackQuestionOnTheFitnessTip(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I respond to the feedback with {string}")
+public void iRespondToTheFeedbackWith(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my response should be visible under the feedback question")
+public void myResponseShouldBeVisibleUnderTheFeedbackQuestion() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Rate a completed program  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I rate the program with a score of {int} stars")
+public void iRateTheProgramWithAScoreOfStars(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the rating should be saved successfully")
+public void theRatingShouldBeSavedSuccessfully() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to view my rating on the program page")
+public void iShouldBeAbleToViewMyRatingOnTheProgramPage() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Write a review for a completed program  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I write a review with the content {string}")
+public void iWriteAReviewWithTheContent(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the review should be saved successfully")
+public void theReviewShouldBeSavedSuccessfully() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to view my review on the program page")
+public void iShouldBeAbleToViewMyReviewOnTheProgramPage() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Submit a suggestion for improvement to an instructor  Time elapsed: 0.018 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I submit a suggestion with the content {string}")
+public void iSubmitASuggestionWithTheContent(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the suggestion should be saved successfully")
+public void theSuggestionShouldBeSavedSuccessfully() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the instructor should be notified of my suggestion")
+public void theInstructorShouldBeNotifiedOfMySuggestion() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.View all ratings and reviews for a completed program  Time elapsed: 0.018 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view the program page")
+public void iViewTheProgramPage() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to see all ratings and reviews from other clients")
+public void iShouldBeAbleToSeeAllRatingsAndReviewsFromOtherClients() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Edit my review for a completed program  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I have already written a review")
+public void iHaveAlreadyWrittenAReview() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I edit my review to change the content to {string}")
+public void iEditMyReviewToChangeTheContentTo(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my review should be updated successfully")
+public void myReviewShouldBeUpdatedSuccessfully() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to see the updated review on the program page")
+public void iShouldBeAbleToSeeTheUpdatedReviewOnTheProgramPage() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Submit a negative or inappropriate rating  Time elapsed: 0.017 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I rate the program with a score of {int} star and a comment {string}")
+public void iRateTheProgramWithAScoreOfStarAndAComment(Integer int1, String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the rating should be flagged for review by the system")
+public void theRatingShouldBeFlaggedForReviewByTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be notified that my rating is under review")
+public void iShouldBeNotifiedThatMyRatingIsUnderReview() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Write an inappropriate review  Time elapsed: 0.025 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I write a review with content {string}")
+public void iWriteAReviewWithContent(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the review should be flagged as inappropriate")
+public void theReviewShouldBeFlaggedAsInappropriate() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be notified that my review has been rejected due to inappropriate content")
+public void iShouldBeNotifiedThatMyReviewHasBeenRejectedDueToInappropriateContent() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Submit a duplicate review or rating  Time elapsed: 0.016 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have already rated a program with 5 stars' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have already rated a program with {int} stars")
+public void iHaveAlreadyRatedAProgramWithStars(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I try to submit the same {int}-star rating again")
+public void iTryToSubmitTheSameStarRatingAgain(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be informed that I have already rated this program")
+public void iShouldBeInformedThatIHaveAlreadyRatedThisProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the system should not allow the duplicate rating or review")
+public void theSystemShouldNotAllowTheDuplicateRatingOrReview() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Submit an incomplete or vague review  Time elapsed: 0.018 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have completed a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have completed a program")
+public void iHaveCompletedAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I submit a review with the content {string}")
+public void iSubmitAReviewWithTheContent(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the system should prompt me to provide more details if the review is too vague")
+public void theSystemShouldPromptMeToProvideMoreDetailsIfTheReviewIsTooVague() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the review should not be saved until I provide a more detailed review")
+public void theReviewShouldNotBeSavedUntilIProvideAMoreDetailedReview() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Feedback and Reviews.Admin review of ratings and reviews before publishing  Time elapsed: 0.01 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I have submitted a rating and review for a program' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I have submitted a rating and review for a program")
+public void iHaveSubmittedARatingAndReviewForAProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the admin reviews my rating and review")
+public void theAdminReviewsMyRatingAndReview() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the admin should approve or reject the review based on guidelines")
+public void theAdminShouldApproveOrRejectTheReviewBasedOnGuidelines() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be notified if my review is published or rejected")
+public void iShouldBeNotifiedIfMyReviewIsPublishedOrRejected() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Monitor user activity and engagement statistics.View user activity summary  Time elapsed: 0.038 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I navigate to the {string}")
+public void iNavigateToThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a summary of user activity")
+public void iShouldSeeASummaryOfUserActivity(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Monitor user activity and engagement statistics.Filter user activity by date range  Time elapsed: 0.021 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select a date range from {string} to {string}")
+public void iSelectADateRangeFromTo(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click {string}")
+public void iClick(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see the activity statistics for the selected date range")
+public void iShouldSeeTheActivityStatisticsForTheSelectedDateRange(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Monitor user activity and engagement statistics.Search for user activity by user ID  Time elapsed: 0.026 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I enter a user ID into the {string} field")
+public void iEnterAUserIDIntoTheField(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click {string}")
+public void iClick(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see the activity details for the selected user")
+public void iShouldSeeTheActivityDetailsForTheSelectedUser(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Monitor user activity and engagement statistics.Search for user activity by user name  Time elapsed: 0.024 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I enter a user name into the {string} field")
+public void iEnterAUserNameIntoTheField(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click {string}")
+public void iClick(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see the activity details for the selected user")
+public void iShouldSeeTheActivityDetailsForTheSelectedUser(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Monitor user activity and engagement statistics.Export user activity report  Time elapsed: 0.016 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click {string}")
+public void iClick(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("a downloadable report should be generated")
+public void aDownloadableReportShouldBeGenerated() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the file name should include the current date in the format {string}")
+public void theFileNameShouldIncludeTheCurrentDateInTheFormat(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Browse programs by difficulty level  Time elapsed: 0.028 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I browse the programs and filter by difficulty level {string}")
+public void iBrowseTheProgramsAndFilterByDifficultyLevel(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of programs with difficulty level {string}")
+public void iShouldSeeAListOfProgramsWithDifficultyLevel(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Browse programs by focus area  Time elapsed: 0.019 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I browse the programs and filter by focus area {string}")
+public void iBrowseTheProgramsAndFilterByFocusArea(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of programs with focus area {string}")
+public void iShouldSeeAListOfProgramsWithFocusArea(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Browse programs by multiple filters (difficulty level and focus area)  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I browse the programs and filter by difficulty level {string} and focus area {string}")
+public void iBrowseTheProgramsAndFilterByDifficultyLevelAndFocusArea(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of programs with difficulty level {string} and focus area {string}")
+public void iShouldSeeAListOfProgramsWithDifficultyLevelAndFocusArea(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Enroll in a program  Time elapsed: 0.02 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select a program with difficulty level {string} and focus area {string}")
+public void iSelectAProgramWithDifficultyLevelAndFocusArea(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click on {string}")
+public void iClickOn(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be successfully enrolled in the selected program")
+public void iShouldBeSuccessfullyEnrolledInTheSelectedProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.View schedule of an enrolled program  Time elapsed: 0.018 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I am enrolled in a program with focus area {string}")
+public void iAmEnrolledInAProgramWithFocusArea(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to view the program's schedule")
+public void iShouldBeAbleToViewTheProgramSSchedule() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see the start and end times of the program")
+public void iShouldSeeTheStartAndEndTimesOfTheProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.No programs available for the selected filters  Time elapsed: 0.033 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I browse the programs and filter by difficulty level {string}")
+public void iBrowseTheProgramsAndFilterByDifficultyLevel(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message saying {string}")
+public void iShouldSeeAMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Attempt to enroll in a fully booked program  Time elapsed: 0.017 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("the program with difficulty level {string} and focus area {string} is fully booked")
+public void theProgramWithDifficultyLevelAndFocusAreaIsFullyBooked(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attempt to enroll in the program")
+public void iAttemptToEnrollInTheProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message saying {string}")
+public void iShouldSeeAMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Attempt to enroll in the same program multiple times  Time elapsed: 0.024 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am already enrolled in the program with focus area {string}")
+public void iAmAlreadyEnrolledInTheProgramWithFocusArea(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attempt to enroll in the same program again")
+public void iAttemptToEnrollInTheSameProgramAgain() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message saying {string}")
+public void iShouldSeeAMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.Cancel enrollment in a program  Time elapsed: 0.022 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am enrolled in the program with focus area {string}")
+public void iAmEnrolledInTheProgramWithFocusArea(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I choose to cancel my enrollment")
+public void iChooseToCancelMyEnrollment() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be successfully unenrolled from the program")
+public void iShouldBeSuccessfullyUnenrolledFromTheProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a confirmation message saying {string}")
+public void iShouldSeeAConfirmationMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Exploration and Enrollment.View program details before enrollment  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select the program with focus area {string}")
+public void iSelectTheProgramWithFocusArea(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see the program's details including its difficulty level, schedule, and description")
+public void iShouldSeeTheProgramSDetailsIncludingItsDifficultyLevelScheduleAndDescription() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Track personal fitness milestone (weight)  Time elapsed: 0.024 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update my weight in my profile")
+public void iUpdateMyWeightInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my weight should be saved successfully in my profile")
+public void myWeightShouldBeSavedSuccessfullyInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to view my updated weight in the progress section")
+public void iShouldBeAbleToViewMyUpdatedWeightInTheProgressSection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Track personal fitness milestone (BMI)  Time elapsed: 0.024 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update my BMI in my profile")
+public void iUpdateMyBMIInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my BMI should be saved successfully in my profile")
+public void myBMIShouldBeSavedSuccessfullyInMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to view my updated BMI in the progress section")
+public void iShouldBeAbleToViewMyUpdatedBMIInTheProgressSection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Track personal fitness milestone (attendance)  Time elapsed: 0.029 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attend a fitness program session")
+public void iAttendAFitnessProgramSession() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my attendance should be recorded for the program")
+public void myAttendanceShouldBeRecordedForTheProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to view my attendance history in the progress section")
+public void iShouldBeAbleToViewMyAttendanceHistoryInTheProgressSection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.View achievements or badges after completing a program  Time elapsed: 0.01 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I complete a fitness program")
+public void iCompleteAFitnessProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive an achievement or badge for completing the program")
+public void iShouldReceiveAnAchievementOrBadgeForCompletingTheProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the achievement or badge should appear in the achievements section of my profile")
+public void theAchievementOrBadgeShouldAppearInTheAchievementsSectionOfMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.View all tracked milestones and achievements  Time elapsed: 0.015 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view my progress section")
+public void iViewMyProgressSection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to see my tracked milestones such as weight, BMI, and attendance")
+public void iShouldBeAbleToSeeMyTrackedMilestonesSuchAsWeightBMIAndAttendance() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be able to see the badges or achievements earned for completing programs")
+public void iShouldBeAbleToSeeTheBadgesOrAchievementsEarnedForCompletingPrograms() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Enter an invalid weight  Time elapsed: 0.016 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update my weight to {string}")
+public void iUpdateMyWeightTo(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see an error message saying {string}")
+public void iShouldSeeAnErrorMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my weight should not be saved until a valid value is entered")
+public void myWeightShouldNotBeSavedUntilAValidValueIsEntered() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Enter an invalid BMI  Time elapsed: 0.011 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update my BMI to {string}")
+public void iUpdateMyBMITo(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see an error message saying {string}")
+public void iShouldSeeAnErrorMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my BMI should not be saved until a valid value is entered")
+public void myBMIShouldNotBeSavedUntilAValidValueIsEntered() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Failed to record attendance in a session  Time elapsed: 0.016 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I attend a fitness program session")
+public void iAttendAFitnessProgramSession() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the system fails to record my attendance")
+public void theSystemFailsToRecordMyAttendance() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message saying {string}")
+public void iShouldSeeAMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Failure to receive achievement or badge after completing a program  Time elapsed: 0.013 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I complete a fitness program")
+public void iCompleteAFitnessProgram() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the system fails to assign an achievement or badge")
+public void theSystemFailsToAssignAnAchievementOrBadge() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a message saying {string}")
+public void iShouldSeeAMessageSaying(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.View progress over time for weight or BMI  Time elapsed: 0.012 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view my progress section")
+public void iViewMyProgressSection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a graph or list showing the changes in my weight and\\/or BMI over time")
+public void iShouldSeeAGraphOrListShowingTheChangesInMyWeightAndOrBMIOverTime() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Progress Tracking.Remove weight or BMI tracking  Time elapsed: 0.019 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a Client' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a Client")
+public void iAmLoggedInAsAClient() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I choose to remove weight tracking from my profile")
+public void iChooseToRemoveWeightTrackingFromMyProfile() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my weight should no longer be tracked and will be removed from the progress section")
+public void myWeightShouldNoLongerBeTrackedAndWillBeRemovedFromTheProgressSection() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Add a New Subscription Plan  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I add a new subscription plan with the following details:")
+public void iAddANewSubscriptionPlanWithTheFollowingDetails(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the new subscription plan {string} for {string} should be available for selection")
+public void theNewSubscriptionPlanForShouldBeAvailableForSelection(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Update an Existing Subscription Plan  Time elapsed: 0.015 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("a subscription plan {string} for {string} exists")
+public void aSubscriptionPlanForExists(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update the subscription plan {string} with the new price {string}")
+public void iUpdateTheSubscriptionPlanWithTheNewPrice(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the subscription plan {string} should reflect the updated price {string}")
+public void theSubscriptionPlanShouldReflectTheUpdatedPrice(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Deactivate a Subscription Plan  Time elapsed: 0.018 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("a subscription plan {string} for {string} exists")
+public void aSubscriptionPlanForExists(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I deactivate the subscription plan {string}")
+public void iDeactivateTheSubscriptionPlan(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the subscription plan {string} should no longer be available for new users")
+public void theSubscriptionPlanShouldNoLongerBeAvailableForNewUsers(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("existing users with {string} plans should retain their benefits until the end of the billing cycle")
+public void existingUsersWithPlansShouldRetainTheirBenefitsUntilTheEndOfTheBillingCycle(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.View All Subscription Plans  Time elapsed: 0.015 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view all subscription plans")
+public void iViewAllSubscriptionPlans() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of all active plans with details:")
+public void iShouldSeeAListOfAllActivePlansWithDetails(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Upgrade to a Premium Subscription  Time elapsed: 0.017 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a user with a "Basic" subscription' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a user with a {string} subscription")
+public void iAmLoggedInAsAUserWithASubscription(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I upgrade to a {string} subscription")
+public void iUpgradeToASubscription(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my subscription type should be updated to {string}")
+public void mySubscriptionTypeShouldBeUpdatedTo(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be charged ${int} for the current billing cycle")
+public void iShouldBeCharged$ForTheCurrentBillingCycle(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Downgrade to a Basic Subscription  Time elapsed: 0.081 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a user with a "Premium" subscription' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a user with a {string} subscription")
+public void iAmLoggedInAsAUserWithASubscription(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I downgrade to a {string} subscription")
+public void iDowngradeToASubscription(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my subscription type should be updated to {string}")
+public void mySubscriptionTypeShouldBeUpdatedTo(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the changes should take effect in the next billing cycle")
+public void theChangesShouldTakeEffectInTheNextBillingCycle() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Cancel a Subscription  Time elapsed: 0 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a user with an active subscription' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a user with an active subscription")
+public void iAmLoggedInAsAUserWithAnActiveSubscription() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I cancel my subscription")
+public void iCancelMySubscription() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("my subscription should remain active until the end of the billing cycle")
+public void mySubscriptionShouldRemainActiveUntilTheEndOfTheBillingCycle() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive a confirmation message {string}")
+public void iShouldReceiveAConfirmationMessage(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.View Available Subscription Plans  Time elapsed: 0 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a user' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a user")
+public void iAmLoggedInAsAUser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I view the available subscription plans")
+public void iViewTheAvailableSubscriptionPlans() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of plans with details:")
+public void iShouldSeeAListOfPlansWithDetails(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Subscription Management.Receive Notification for Expiring Subscription  Time elapsed: 0 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as a user with a subscription expiring in 7 days' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as a user with a subscription expiring in {int} days")
+public void iAmLoggedInAsAUserWithASubscriptionExpiringInDays(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the system generates notifications")
+public void theSystemGeneratesNotifications() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive a message {string}")
+public void iShouldReceiveAMessage(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Login.login successfully  Time elapsed: 0.029 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'The user has entered all the data correctly  "email" , "password"' is undefined.
+You can implement this step using the snippet(s) below:
+
+@Given("The user has entered all the data correctly  {string} , {string}")
+public void theUserHasEnteredAllTheDataCorrectly(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Login.username error  Time elapsed: 0.042 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.System$Logger.log(java.lang.System$Logger$Level, String)" because "fitnessAcceptanceTest.login.logger" is null
+
+Login.password error  Time elapsed: 0.012 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.lang.System$Logger.log(java.lang.System$Logger$Level, String)" because "fitnessAcceptanceTest.login.logger" is null
+
+Program Monitoring.View statistics of the most popular programs  Time elapsed: 0.024 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I navigate to the {string}")
+public void iNavigateToThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select the option to view {string}")
+public void iSelectTheOptionToView(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a list of programs sorted by enrollment")
+public void iShouldSeeAListOfProgramsSortedByEnrollment(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Monitoring.Generate reports on revenue, attendance, and client progress  Time elapsed: 0.023 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 8 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select the option to generate {string}")
+public void iSelectTheOptionToGenerate(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I specify the report type as {string}")
+public void iSpecifyTheReportTypeAs(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive a detailed revenue report for all programs")
+public void iShouldReceiveADetailedRevenueReportForAllPrograms(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive a detailed attendance report for all programs")
+public void iShouldReceiveADetailedAttendanceReportForAllPrograms(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should receive a detailed progress report for all enrolled clients")
+public void iShouldReceiveADetailedProgressReportForAllEnrolledClients(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Monitoring.Track active and completed programs  Time elapsed: 0.016 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select the option to view {string}")
+public void iSelectTheOptionToView(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see programs categorized by status")
+public void iShouldSeeProgramsCategorizedByStatus(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Program Monitoring.Export program performance reports  Time elapsed: 0.017 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("I am on the {string}")
+public void iAmOnThe(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click {string}")
+public void iClick(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I select the report type as {string}")
+public void iSelectTheReportTypeAs(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("a downloadable revenue report should be generated")
+public void aDownloadableRevenueReportShouldBeGenerated() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the file name should include the current date in the format {string}")
+public void theFileNameShouldIncludeTheCurrentDateInTheFormat(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+User Management.Add New User  Time elapsed: 0.014 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I add a new user with valid details")
+public void iAddANewUserWithValidDetails() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the new user should be created successfully")
+public void theNewUserShouldBeCreatedSuccessfully() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a success message confirming the addition")
+public void iShouldSeeASuccessMessageConfirmingTheAddition() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+User Management.Update User Details  Time elapsed: 0.009 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I update the user details with new information")
+public void iUpdateTheUserDetailsWithNewInformation() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the updated user details should be saved")
+public void theUpdatedUserDetailsShouldBeSaved() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a confirmation message with the updated information")
+public void iShouldSeeAConfirmationMessageWithTheUpdatedInformation() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+User Management.Deactivate User Account  Time elapsed: 0.01 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I deactivate a user account")
+public void iDeactivateAUserAccount() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the user should be deactivated")
+public void theUserShouldBeDeactivated() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should see a success message confirming the deactivation")
+public void iShouldSeeASuccessMessageConfirmingTheDeactivation() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+User Management.User Already Exists  Time elapsed: 0.008 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I try to add a new user with an existing email")
+public void iTryToAddANewUserWithAnExistingEmail() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be notified that the email is already registered")
+public void iShouldBeNotifiedThatTheEmailIsAlreadyRegistered() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be asked to choose a different email address")
+public void iShouldBeAskedToChooseADifferentEmailAddress() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+User Management.Invalid Email Format  Time elapsed: 0.012 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am logged in as an admin' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am logged in as an admin")
+public void iAmLoggedInAsAnAdmin() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I try to add a user with an invalid email address")
+public void iTryToAddAUserWithAnInvalidEmailAddress() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be notified that the email format is invalid")
+public void iShouldBeNotifiedThatTheEmailFormatIsInvalid() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be prompted to enter a valid email address")
+public void iShouldBePromptedToEnterAValidEmailAddress() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
