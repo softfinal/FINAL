@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class MonitorUserMangTest {
     private final Function adminFunctions = new Function();
@@ -37,7 +36,7 @@ public class MonitorUserMangTest {
                 Map.of("Metric", "Inactive Users", "Value", "50")
             ).stream()
             .map(map -> List.of(map.get("Metric"), map.get("Value")))
-            .collect(Collectors.toList())
+            .toList()
         ));
     }
 
@@ -55,7 +54,7 @@ public class MonitorUserMangTest {
         // Convert the mapList to a List<List<String>>
         List<List<String>> listList = mapList.stream()
             .map(map -> List.of(map.get("Metric"), map.get("Value")))
-            .collect(Collectors.toList());
+            .toList();
 
         // Now you can pass the List<List<String>> to DataTable.create
         i_should_see_the_activity_statistics_for_the_selected_date_range(DataTable.create(listList));
@@ -70,7 +69,7 @@ public class MonitorUserMangTest {
                 Map.of("Metric", "Last Login", "Value", "2024-12-18")
             ).stream()
             .map(map -> List.of(map.get("Metric"), map.get("Value")))
-            .collect(Collectors.toList())
+            .toList()
         ));
     }
 
@@ -83,7 +82,7 @@ public class MonitorUserMangTest {
                 Map.of("Metric", "Last Login", "Value", "2024-12-18")
             ).stream()
             .map(map -> List.of(map.get("Metric"), map.get("Value")))
-            .collect(Collectors.toList())
+            .toList()
         ));
     }
 
