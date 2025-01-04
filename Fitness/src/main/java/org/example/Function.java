@@ -1089,12 +1089,13 @@ public class Function {
 	        while (true) {
 	        	
 	        	printing.printSomething("""
-	                    ---- Feedback Management ----
-	                    | 1. Review and Respond       |
-	                    | 2. Back                     |
-	                    ------------------------------
-	                    Enter your choice:
-	                """);
+            ---- Feedback Management ----
+            | 1. Review and Respond       |
+            | 2. Back                     |
+            ------------------------------
+            Enter your choice:
+        """);
+
 
 	        			
 
