@@ -84,21 +84,29 @@ class ClientService {
         Client client = clients.get(clientId);
         if (client != null) {
             client.updateProfile(name, age, fitnessGoals, dietaryPreferences);
+        } else {
+            logger.warning("Client with ID " + clientId + " not found for update.");
         }
     }
 
     public void deleteClient(Object id) {
-        clients.remove(id);
+        if (id != null && clients.containsKey(id)) {
+            clients.remove(id);
+            logger.info("Client with ID " + id + " deleted.");
+        } else {
+            logger.warning("Client with ID " + id + " not found for deletion.");
+        }
     }
 
     public void removeClient(Client client) {
-        if (client != null) {
+        if (client != null && clients.containsKey(client.getId())) {
             clients.remove(client.getId());
+            logger.info("Client " + client.getId() + " removed.");
         }
     }
 
     public Collection<Client> listAllClients() {
-        return clients.values();
+        return clients.isEmpty() ? Collections.emptyList() : clients.values();
     }
 
     // Log errors conditionally
@@ -114,6 +122,10 @@ class FileService {
     private static final Logger logger = Logger.getLogger(FileService.class.getName());
 
     public void saveToFile(String fileName, Collection<Client> clients) throws IOException {
+        if (clients == null || clients.isEmpty()) {
+            logger.warning("No clients available to save to file.");
+            return;
+        }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Client client : clients) {
                 writer.write(client.toString());
@@ -127,6 +139,11 @@ class FileService {
 
     public List<Client> loadFromFile(String fileName) throws IOException {
         List<Client> clients = new ArrayList<>();
+        File file = new File(fileName);
+        if (!file.exists()) {
+            logger.warning("File " + fileName + " does not exist.");
+            return clients;
+        }
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -169,50 +186,4 @@ public class ProgramManagement {
         try {
             // إنشاء عملاء تجريبيين
             int clientId1 = clientService.createClient("John Doe", 25, "Lose Weight", "Vegetarian");
-            int clientId2 = clientService.createClient("Jane Smith", 30, "Build Muscle", "Vegan");
-
-            // عرض قائمة العملاء
-            System.out.println("All Clients:");
-            for (Client client : clientService.listAllClients()) {
-                System.out.println(client);
-            }
-
-            // تحديث بيانات عميل
-            clientService.updateClient(clientId1, "John Doe", 26, "Build Muscle", "Gluten-Free");
-            System.out.println("\nUpdated Client:");
-            System.out.println(clientService.getClientById(clientId1));
-
-            // حذف عميل
-            clientService.deleteClient(clientId2);
-            System.out.println("\nClient Deleted. Remaining Clients:");
-            for (Client client : clientService.listAllClients()) {
-                System.out.println(client);
-            }
-
-            // حفظ البيانات إلى ملف
-            fileService.saveToFile("clients.txt", clientService.listAllClients());
-            System.out.println("\nClients saved to file.");
-
-            // تحميل البيانات من الملف
-            List<Client> loadedClients = fileService.loadFromFile("clients.txt");
-            System.out.println("\nLoaded Clients from File:");
-            for (Client client : loadedClients) {
-                System.out.println(client);
-            }
-        } catch (IOException e) {
-            logError("An error occurred during program execution", e);
-        }
-    }
-
-    // Log errors conditionally
-    private void logError(String message, Exception e) {
-        if (logger.isLoggable(Level.SEVERE)) {
-            logger.log(Level.SEVERE, message, e);
-        }
-    }
-
-    public static void main(String[] args) {
-        ProgramManagement program = new ProgramManagement();
-        program.run();
-    }
-}
+            
