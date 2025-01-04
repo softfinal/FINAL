@@ -50,6 +50,16 @@ public class Function {
         }
     }
 
+    public class AdminPageException extends Exception {
+        public AdminPageException(String message) {
+            super(message);
+        }
+
+        public AdminPageException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+
     public void signUpFunction() throws SignUpException {
         try {
             printing.printSomething("Sign Up Page");
@@ -120,32 +130,34 @@ public class Function {
 
     
     
-
-    public void adminPage(String adminId) throws Exception {
-        while (true) {
-            printing.printSomething("""
-                -------- Admin Dashboard --------
-                | 1. User Management           |
-                | 2. Program Monitoring         |
-                | 3. Content Management         |
-                | 4. Subscription Management    |
-                | 5. Log Out                    |
-                ---------------------------------
-                Enter your choice:
-            """);
-
-            int choice = getValidChoice(1, 5);
-            switch (choice) {
-                case 1 -> handleUserManagement();
-                case 2 -> handleProgramMonitoring();
-                case 3 -> handleContentManagement();
-                case 4 -> handleSubscriptionManagement();
-                case 5 -> {
-                    printing.printSomething("Logging out...");
-                    return;
+    public void adminPage(String adminId) throws AdminPageException {
+        try {
+            while (true) {
+                printing.printSomething("""
+                    -------- Admin Dashboard --------
+                    | 1. User Management           |
+                    | 2. Program Monitoring         |
+                    | 3. Content Management         |
+                    | 4. Subscription Management    |
+                    | 5. Log Out                    |
+                    ---------------------------------
+                    Enter your choice:
+                """);
+                int choice = getValidChoice(1, 5);
+                switch (choice) {
+                    case 1 -> handleUserManagement();
+                    case 2 -> handleProgramMonitoring();
+                    case 3 -> handleContentManagement();
+                    case 4 -> handleSubscriptionManagement();
+                    case 5 -> {
+                        printing.printSomething("Logging out...");
+                        return;
+                    }
+                    default -> printing.printSomething(INVALID_CHOICE_TRY_AGAIN);
                 }
-                default -> printing.printSomething(INVALID_CHOICE_TRY_AGAIN);
             }
+        } catch (Exception e) {
+            throw new AdminPageException("An error occurred while handling the admin dashboard.", e);
         }
     }
 
