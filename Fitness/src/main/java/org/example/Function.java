@@ -40,33 +40,48 @@ public class Function {
     static final Scanner scanner = new Scanner(System.in);
     
     //signup 
-    public void signUpFunction() throws Exception {
-        printing.printSomething("Sign Up Page");
-        printing.printSomething("1. Sign Up as Client");
-        printing.printSomething("2. Sign Up as Instructor");
-        printing.printSomething("Enter your choice: ");
-        int choice = getValidChoice(1, 2);
+    public class SignUpException extends Exception {
+        public SignUpException(String message) {
+            super(message);
+        }
 
-        scanner.nextLine(); // Clear buffer
-        printing.printSomething("Enter Name: ");
-        String name = scanner.nextLine();
-        printing.printSomething("Enter Email: ");
-        String email = scanner.nextLine();
-        printing.printSomething("Enter Phone: ");
-        String phone = scanner.nextLine();
-        printing.printSomething("Enter Password: ");
-        String password = scanner.nextLine();
-
-        // Generate a unique ID
-        String id = generateUniqueId();
-
-        // Append the user to the appropriate file
-        if (choice == 1) {
-            signUpClient(id, name, email, phone, password);
-        } else if (choice == 2) {
-            signUpInstructor(id, name, email, phone, password);
+        public SignUpException(String message, Throwable cause) {
+            super(message, cause);
         }
     }
+
+    public void signUpFunction() throws SignUpException {
+        try {
+            printing.printSomething("Sign Up Page");
+            printing.printSomething("1. Sign Up as Client");
+            printing.printSomething("2. Sign Up as Instructor");
+            printing.printSomething("Enter your choice: ");
+            int choice = getValidChoice(1, 2);
+            scanner.nextLine(); // Clear buffer
+
+            printing.printSomething("Enter Name: ");
+            String name = scanner.nextLine();
+            printing.printSomething("Enter Email: ");
+            String email = scanner.nextLine();
+            printing.printSomething("Enter Phone: ");
+            String phone = scanner.nextLine();
+            printing.printSomething("Enter Password: ");
+            String password = scanner.nextLine();
+
+            // Generate a unique ID
+            String id = generateUniqueId();
+
+            // Append the user to the appropriate file
+            if (choice == 1) {
+                signUpClient(id, name, email, phone, password);
+            } else if (choice == 2) {
+                signUpInstructor(id, name, email, phone, password);
+            }
+        } catch (Exception e) {
+            throw new SignUpException("An error occurred during the sign-up process.", e);
+        }
+    }
+
    
     private String generateUniqueId() {
         // Generate a random 3-digit unique ID
