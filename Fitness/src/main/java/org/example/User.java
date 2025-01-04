@@ -60,10 +60,12 @@ public class User {
     public void loginCH(String string, String string2) {
         logged = string.equals(username) && string2.equals(password);
         setLogstate(logged);
+
+        // Using String.format for log formatting
         if (logged) {
-            logger.info("Login successful for user: " + username);
+            logger.info(String.format("Login successful for user: %s", username));
         } else {
-            logger.warning("Login failed for user: " + username);
+            logger.warning(String.format("Login failed for user: %s", username));
         }
     }
 
@@ -77,7 +79,8 @@ public class User {
         User u = new User();
         if (u.getLogstate()) {
             users1.add(l);
-            logger.info("User " + l.getUsername() + " added successfully.");
+            // Using String.format for log formatting
+            logger.info(String.format("User '%s' added successfully.", l.getUsername()));
         } else {
             logger.warning("You should login first");
         }
@@ -108,4 +111,3 @@ public class User {
         this.address = string;
     }
 }
-
