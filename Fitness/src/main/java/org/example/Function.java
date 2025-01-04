@@ -3,6 +3,8 @@ package org.example;
 import java.io.*;
 import java.util.*;
 
+import org.example.Function.AdminPageException;
+
 public class Function {
 
     private static final String NOT_FOUND = " not found.";
@@ -130,7 +132,7 @@ public class Function {
 
     
     
-    public void adminPage(String adminId) throws AdminPageException {
+    public void adminPage() throws AdminPageException {
         try {
             while (true) {
                 printing.printSomething("""
@@ -1069,13 +1071,15 @@ public class Function {
 	private void handleFeedback() {
 	    try {
 	        while (true) {
-	        	printing.printSomething("""
-	        			---- Feedback Management ----
-	        			| 1. Review and Respond       |
-	        			| 2. Back                     |
-	        			--------------------------------
-	        			Enter your choice:
-	        		""");
+	        	
+	        	            printing.printSomething("""
+	        	                ---- Feedback Management ----
+	        	                | 1. Review and Respond       |
+	        	                | 2. Back                     |
+	        	                ------------------------------
+	        	                Enter your choice:
+	        	            """);
+
 
 	            int choice = getValidChoice(1, 2);
 	            switch (choice) {
@@ -1448,12 +1452,17 @@ public class Function {
     //login
 	
 
- 
+ // Define the LoginException class
+    public class LoginException extends Exception {
+        public LoginException(String message) {
+            super(message); // Pass the message to the parent Exception class
+        }
+    }
+
 
 
     private boolean logState; // Track login state
-
-    public void signInFunction() throws Exception {
+    public void signInFunction() throws LoginException, IOException, AdminPageException {
         Scanner scanners = new Scanner(System.in);
         Printing printings = new Printing();
 
@@ -1470,7 +1479,7 @@ public class Function {
         if (username.equals(adminUsername) && password.equals(adminPassword)) {
             printings.printSomething("Admin login successful! Redirecting to admin settings...");
             setLogstate(true);
-            adminPage(username); // Open admin settings
+            adminPage(); // Open admin settings
         } else {
             // Validate against clients.txt
             String role = validateCredentials(username, password);
@@ -1482,13 +1491,13 @@ public class Function {
             } else if (INSTRUCTOR.equals(role)) {
                 printings.printSomething("Instructor login successful! Welcome, " + username + ".");
                 setLogstate(true);
-               
             } else {
-                printings.printSomething("Invalid username or password. Please try again.");
-                setLogstate(false);
+                // Throw the custom exception for invalid credentials
+                throw new LoginException("Invalid username or password. Please try again.");
             }
         }
     }
+
 
     // Validate credentials from the file
     private String validateCredentials(String username, String password) {
