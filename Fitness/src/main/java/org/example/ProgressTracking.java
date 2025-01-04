@@ -35,7 +35,7 @@ public class ProgressTracking {
 
         @Override
         public String toString() {
-            return "Date: " + date + ", Weight: " + weight + "kg, BMI: " + bmi;
+            return String.format("Date: %s, Weight: %.2fkg, BMI: %.2f", date, weight, bmi);
         }
     }
 
@@ -59,7 +59,7 @@ public class ProgressTracking {
 
         @Override
         public String toString() {
-            return name + ": " + description;
+            return String.format("%s: %s", name, description);
         }
     }
 
@@ -68,9 +68,9 @@ public class ProgressTracking {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(MILESTONES_TXT, true))) {
             writer.write(clientId + "," + weight + "," + bmi + "," + date);
             writer.newLine();
-            logger.info("Milestone recorded for client " + clientId);
+            logger.info(String.format("Milestone recorded for client %s", clientId));
         } catch (IOException e) {
-            logger.severe("Error writing milestone: " + e.getMessage());
+            logger.severe(String.format("Error writing milestone: %s", e.getMessage()));
         }
     }
 
@@ -87,7 +87,7 @@ public class ProgressTracking {
                 }
             }
         } catch (IOException e) {
-            logger.severe("Error reading milestones: " + e.getMessage());
+            logger.severe(String.format("Error reading milestones: %s", e.getMessage()));
         }
         return milestones;
     }
@@ -97,9 +97,9 @@ public class ProgressTracking {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("attendance.txt", true))) {
             writer.write(clientId + "," + programId + "," + attended + "," + date);
             writer.newLine();
-            logger.info("Attendance recorded for client " + clientId + " on " + date);
+            logger.info(String.format("Attendance recorded for client %s on %s", clientId, date));
         } catch (IOException e) {
-            logger.severe("Error writing attendance: " + e.getMessage());
+            logger.severe(String.format("Error writing attendance: %s", e.getMessage()));
         }
     }
 
@@ -111,11 +111,11 @@ public class ProgressTracking {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data[0].trim().equals(clientId)) { // Ensure exact match for clientId
-                    attendanceList.add("Program ID: " + data[1].trim() + ", Attended: " + data[2].trim() + ", Date: " + data[3].trim());
+                    attendanceList.add(String.format("Program ID: %s, Attended: %s, Date: %s", data[1].trim(), data[2].trim(), data[3].trim()));
                 }
             }
         } catch (IOException e) {
-            logger.severe("Error reading attendance: " + e.getMessage());
+            logger.severe(String.format("Error reading attendance: %s", e.getMessage()));
         }
         return attendanceList;
     }
@@ -125,9 +125,9 @@ public class ProgressTracking {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("achievements.txt", true))) {
             writer.write(clientId + "," + achievementName + "," + description);
             writer.newLine();
-            logger.info("Achievement '" + achievementName + "' added for client " + clientId);
+            logger.info(String.format("Achievement '%s' added for client %s", achievementName, clientId));
         } catch (IOException e) {
-            logger.severe("Error writing achievement: " + e.getMessage());
+            logger.severe(String.format("Error writing achievement: %s", e.getMessage()));
         }
     }
 
@@ -148,12 +148,12 @@ public class ProgressTracking {
                 }
             }
         } catch (IOException e) {
-            logger.severe("Error during milestone removal: " + e.getMessage());
+            logger.severe(String.format("Error during milestone removal: %s", e.getMessage()));
         }
 
         // Replace the original file with the updated file
         if (originalFile.delete() && tempFile.renameTo(originalFile)) {
-            logger.info("Weight removed successfully for client ID: " + clientId);
+            logger.info(String.format("Weight removed successfully for client ID: %s", clientId));
         } else {
             logger.severe("Failed to update milestones file.");
         }
@@ -161,7 +161,7 @@ public class ProgressTracking {
 
     public static void main(String[] args) {
         ProgressTracking progressTracking = new ProgressTracking();
-        
+
         // Test the methods
         progressTracking.addMilestone("123", 75.5, 23.5, "2025-01-04");
         progressTracking.addAchievement("123", "First Milestone", "Completed first fitness milestone.");
