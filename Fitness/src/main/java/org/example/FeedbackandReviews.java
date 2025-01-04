@@ -13,22 +13,10 @@ public class FeedbackandReviews {
 
     // Customizable feedback file path from environment variable or default
     private static final String FEEDBACK_FILE_PATH = System.getenv("FEEDBACK_FILE_PATH") != null
-            ? System.getenv("FEEDBACK_FILE_PATH") 
+            ? System.getenv("FEEDBACK_FILE_PATH")
             : "C:/Users/HP ZBook/git/repository3/fitness/target/feedback.txt"; // Default path
 
     private static final String NOTIFICATIONS_FILE_PATH = "notifications.txt";
-
-    // Constructor to optionally pass a custom file path
-    public FeedbackandReviews(String feedbackFilePath) {
-        if (feedbackFilePath != null && !feedbackFilePath.isEmpty()) {
-            this.feedbackFilePath = feedbackFilePath;
-        }
-    }
-
-    // Default constructor using the environment variable or default path
-    public FeedbackandReviews() {
-        // This will use the static FEEDBACK_FILE_PATH value
-    }
 
     // Method for clients to submit feedback
     public void submitFeedback(String clientId, String programId, String feedback) {
@@ -36,6 +24,7 @@ public class FeedbackandReviews {
             File file = new File(FEEDBACK_FILE_PATH);
             boolean isFileCreated = file.createNewFile();
 
+            // Log only when the file is created or already exists
             if (isFileCreated) {
                 logger.info(String.format("Feedback file created successfully at: %s", FEEDBACK_FILE_PATH));
             } else {
@@ -84,6 +73,7 @@ public class FeedbackandReviews {
                     feedbackFound = true;
                     clientId = data[1];
                     data[4] = approve ? "Approved" : "Rejected";
+                    // Log the approval/rejection of feedback
                     logger.info(String.format("Feedback ID %s has been %s.", feedbackId, approve ? "approved" : "rejected"));
                 }
                 updatedContent.append(String.join(",", data)).append("\n");
@@ -92,11 +82,13 @@ public class FeedbackandReviews {
             logger.log(Level.SEVERE, "An error occurred while reviewing feedback.", e);
         }
 
+        // Only log warning and return if feedback was not found
         if (!feedbackFound) {
             logger.warning(String.format("Feedback ID %s not found.", feedbackId));
             return;
         }
 
+        // Write the updated content back to the file if feedback is found and updated
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FEEDBACK_FILE_PATH))) {
             writer.write(updatedContent.toString());
         } catch (IOException e) {
@@ -114,7 +106,8 @@ public class FeedbackandReviews {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOTIFICATIONS_FILE_PATH, true))) {
             writer.write(String.format("%s,Feedback ID %s has been %s.", clientId, feedbackId, approve ? "approved" : "rejected"));
             writer.newLine();
-            logger.info(String.format("Client %s has been notified about the feedback review of ID %s. Status: %s.", 
+            // Log notification to client only conditionally
+            logger.info(String.format("Client %s has been notified about the feedback review of ID %s. Status: %s.",
                     clientId, feedbackId, approve ? "Approved" : "Rejected"));
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An error occurred while notifying the client.", e);
