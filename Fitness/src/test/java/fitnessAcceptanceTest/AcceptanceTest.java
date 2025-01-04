@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "Features",
+    features = "Features",  // Path to your feature files
     plugin = {
         "pretty",
         "html:target/cucumber-html-report",
@@ -16,8 +16,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
     },
     monochrome = true,
     snippets = SnippetType.CAMELCASE,
-    glue = {"fitnessAcceptanceTest"}
-
+    glue = {"fitnessAcceptanceTest"}  // Package where your step definitions are
 )
 public class AcceptanceTest {
 }
