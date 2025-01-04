@@ -58,14 +58,18 @@ public class User {
 
     // Method to login by matching username and password
     public void loginCH(String string, String string2) {
-        logged = string.equals(username) && string2.equals(password);
-        setLogstate(logged);
+        if (string != null && string2 != null) {
+            logged = string.equals(username) && string2.equals(password);
+            setLogstate(logged);
 
-        // Using String.format for log formatting
-        if (logged) {
-            logger.info(String.format("Login successful for user: %s", username));
+            // Log based on login state
+            if (logged) {
+                logger.info(String.format("Login successful for user: %s", username));
+            } else {
+                logger.warning(String.format("Login failed for user: %s", username));
+            }
         } else {
-            logger.warning(String.format("Login failed for user: %s", username));
+            logger.warning("Username or password cannot be null");
         }
     }
 
@@ -76,10 +80,10 @@ public class User {
 
     // Method to add a user to the list of users if logged in
     public static void adduser(User l) {
+        // Only proceed if the current user is logged in
         User u = new User();
         if (u.getLogstate()) {
             users1.add(l);
-            // Using String.format for log formatting
             logger.info(String.format("User '%s' added successfully.", l.getUsername()));
         } else {
             logger.warning("You should login first");
@@ -88,12 +92,17 @@ public class User {
 
     // Method to check if a user is registered
     public boolean isRegest(String string) {
-        for (User user : users1) {
-            if (user.getUsername().equals(string)) {
-                return false;  // User already registered
+        if (string != null) {
+            for (User user : users1) {
+                if (user.getUsername().equals(string)) {
+                    return false;  // User already registered
+                }
             }
+            return true;  // User not registered
+        } else {
+            logger.warning("Username cannot be null");
+            return false;
         }
-        return true;  // User not registered
     }
 
     // Setter for user ID
