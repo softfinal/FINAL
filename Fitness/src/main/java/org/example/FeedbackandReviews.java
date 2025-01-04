@@ -17,6 +17,7 @@ public class FeedbackandReviews {
             : "C:/Users/HP ZBook/git/repository3/fitness/target/feedback.txt"; // Default path
 
     private static final String NOTIFICATIONS_FILE_PATH = "notifications.txt";
+    private StringBuilder updatedContentToWrite = new StringBuilder();
 
     // Method for clients to submit feedback
     public void submitFeedback(String clientId, String programId, String feedback) {
@@ -25,18 +26,16 @@ public class FeedbackandReviews {
             boolean isFileCreated = file.createNewFile();
 
             // Log only when the file is created or already exists
-            if (isFileCreated && logger.isLoggable(Level.INFO)) {
+            if (isFileCreated) {
                 logger.info(String.format("Feedback file created successfully at: %s", FEEDBACK_FILE_PATH));
-            } else if (logger.isLoggable(Level.INFO)) {
+            } else {
                 logger.info(String.format("Feedback file already exists at: %s", FEEDBACK_FILE_PATH));
             }
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
                 writer.write(String.format("%s,%s,%s,%s,Pending", UUID.randomUUID(), clientId, programId, feedback));
                 writer.newLine();
-                if (logger.isLoggable(Level.INFO)) {
-                    logger.info("Your feedback has been submitted and is pending approval.");
-                }
+                logger.info("Your feedback has been submitted and is pending approval.");
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An error occurred while submitting feedback.", e);
@@ -63,6 +62,14 @@ public class FeedbackandReviews {
 
     // Method for admin to approve or reject feedback and notify clients
     public void reviewFeedback(String feedbackId, boolean approve) {
+        String clientId = findAndUpdateFeedback(feedbackId, approve);
+        if (clientId != null) {
+            writeUpdatedFeedback();
+            notifyClient(clientId, feedbackId, approve);
+        }
+    }
+
+    private String findAndUpdateFeedback(String feedbackId, boolean approve) {
         StringBuilder updatedContent = new StringBuilder();
         String clientId = null;
         boolean feedbackFound = false;
@@ -75,10 +82,7 @@ public class FeedbackandReviews {
                     feedbackFound = true;
                     clientId = data[1];
                     data[4] = approve ? "Approved" : "Rejected";
-                    // Log the approval/rejection of feedback only if it's enabled
-                    if (logger.isLoggable(Level.INFO)) {
-                        logger.info(String.format("Feedback ID %s has been %s.", feedbackId, approve ? "approved" : "rejected"));
-                    }
+                    logFeedbackApproval(feedbackId, approve);
                 }
                 updatedContent.append(String.join(",", data)).append("\n");
             }
@@ -86,24 +90,26 @@ public class FeedbackandReviews {
             logger.log(Level.SEVERE, "An error occurred while reviewing feedback.", e);
         }
 
-        // Only log warning and return if feedback was not found
         if (!feedbackFound && logger.isLoggable(Level.WARNING)) {
             logger.warning(String.format("Feedback ID %s not found.", feedbackId));
-            return;
+            return null;
         }
 
-        // Write the updated content back to the file if feedback is found and updated
-        if (feedbackFound) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FEEDBACK_FILE_PATH))) {
-                writer.write(updatedContent.toString());
-            } catch (IOException e) {
-                logger.log(Level.SEVERE, "An error occurred while updating feedback.", e);
-            }
+        updatedContentToWrite = updatedContent;
+        return clientId;
+    }
 
-            // Only notify the client if feedback is found and successfully updated
-            if (clientId != null) {
-                notifyClient(clientId, feedbackId, approve);
-            }
+    private void logFeedbackApproval(String feedbackId, boolean approve) {
+        if (logger.isLoggable(Level.INFO)) {
+            logger.info(String.format("Feedback ID %s has been %s.", feedbackId, approve ? "approved" : "rejected"));
+        }
+    }
+
+    private void writeUpdatedFeedback() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FEEDBACK_FILE_PATH))) {
+            writer.write(updatedContentToWrite.toString());
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, "An error occurred while updating feedback.", e);
         }
     }
 
@@ -112,11 +118,9 @@ public class FeedbackandReviews {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOTIFICATIONS_FILE_PATH, true))) {
             writer.write(String.format("%s,Feedback ID %s has been %s.", clientId, feedbackId, approve ? "approved" : "rejected"));
             writer.newLine();
-            // Log notification to client only if logging is enabled
-            if (logger.isLoggable(Level.INFO)) {
-                logger.info(String.format("Client %s has been notified about the feedback review of ID %s. Status: %s.",
-                        clientId, feedbackId, approve ? "Approved" : "Rejected"));
-            }
+            // Log notification to client only conditionally
+            logger.info(String.format("Client %s has been notified about the feedback review of ID %s. Status: %s.",
+                    clientId, feedbackId, approve ? "Approved" : "Rejected"));
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An error occurred while notifying the client.", e);
         }
