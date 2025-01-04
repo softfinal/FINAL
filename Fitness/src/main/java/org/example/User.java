@@ -2,91 +2,110 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-	public class User {
+public class User {
 
-	    String password;
-	    String username;
-	    String address;
-	    String id;
-	    String phone;
-	    String type;
-	    private boolean logged;
-	    public static final List<User> users1 = new ArrayList<>();
-	    public User(){
-	        User.users1.add(new User(" loaa ","123","admin"));
-	      
-	    }
-	    public User(String name, String pass,String type){
-	        this.username=(name);
-	        this.password=(pass);
-	        this.type=(type);
+    // Logger instance for logging messages
+    private static final Logger logger = Logger.getLogger(User.class.getName());
 
-	    }
-	    public void setType(String string) {
+    // User attributes
+    String password;
+    String username;
+    String address;
+    String id;
+    String phone;
+    String type;
+    private boolean logged;
+    protected static final List<User> users1 = new ArrayList<>();
 
-	        this.type = string;
-	    }
+    // Default constructor
+    public User() {
+        User.users1.add(new User("loaa", "123", "admin"));
+    }
 
-	    public void setLogstate(boolean l) {
+    // Constructor with parameters to initialize the user
+    public User(String name, String pass, String type) {
+        this.username = name;
+        this.password = pass;
+        this.type = type;
+    }
 
-	        this.logged = l;
-	    }
+    // Setter for type
+    public void setType(String string) {
+        this.type = string;
+    }
 
-	    public boolean getLogstate() {
+    // Setter for login state
+    public void setLogstate(boolean l) {
+        this.logged = l;
+    }
 
-	        return logged;
-	    }
+    // Getter for login state
+    public boolean getLogstate() {
+        return logged;
+    }
 
-	    public void setUserName(String string) {
+    // Setter for username
+    public void setUserName(String string) {
+        this.username = string;
+    }
 
-	        this.username = string;
-	    }
+    // Setter for password
+    public void setPass(String string2) {
+        this.password = string2;
+    }
 
-	    public void setPass(String string2) {
+    // Method to login by matching username and password
+    public void loginCH(String string, String string2) {
+        logged = string.equals(username) && string2.equals(password);
+        setLogstate(logged);
+        if (logged) {
+            logger.info("Login successful for user: " + username);
+        } else {
+            logger.warning("Login failed for user: " + username);
+        }
+    }
 
-	        this.password= string2;
-	    }
+    // Getter for username
+    public String getUsername() {
+        return username;
+    }
 
-	    public void loginCH(String string, String string2) {
+    // Method to add a user to the list of users if logged in
+    public static void adduser(User l) {
+        User u = new User();
+        if (u.getLogstate()) {
+            users1.add(l);
+            logger.info("User " + l.getUsername() + " added successfully.");
+        } else {
+            logger.warning("You should login first");
+        }
+    }
 
-	        logged = string.equals(username) && string2.equals(password);
-	        setLogstate(logged);
-	    }
+    // Method to check if a user is registered
+    public boolean isRegest(String string) {
+        for (User user : users1) {
+            if (user.getUsername().equals(string)) {
+                return false;  // User already registered
+            }
+        }
+        return true;  // User not registered
+    }
 
-	    public String getUsername() {
+    // Setter for user ID
+    public void setId(String string) {
+        this.id = string;
+    }
 
-	        return username;
-	    }
+    // Setter for phone number
+    public void setPhone(String string) {
+        this.phone = string;
+    }
 
-	    public static void adduser(User l) {
-	        User u =new User();
-	        if(u.getLogstate())
-	        {
-	            users1.add(l);
+    // Setter for address
+    public void setAddress(String string) {
+        this.address = string;
+    }
+}
 
-	        }
-	        else
-	        	System.out.println("You should login first");
-
-	    }
-	    public boolean isRegest(String string) {
-
-	        for (User user : users1) {
-	            if (user.getUsername().equals(string))
-	                return false;
-	        }
-	        return true;
-	    }
-	    public void setId(String string) {
-	        this.id = string;
-	    }
-
-	    public void setPhone(String string) {
-	        this.phone = string;
-	    }
-
-	    public void setAddress(String string) {
-	        this.address = string;
-	    }
-	}
