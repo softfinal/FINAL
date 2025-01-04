@@ -97,13 +97,13 @@ public class MonitorUserMangTest {
 
     @Given("I am logged in as an admin")
     public void i_am_logged_in_as_an_admin() {
-        logger.log(Level.INFO, "Admin is logged into the system");
+        logger.log(Level.INFO, () -> "Admin is logged into the system");
         System.setOut(new PrintStream(outputStream)); // Capture console output
     }
 
     @When("I navigate to the {string}")
     public void i_navigate_to_the(String dashboard) {
-        logger.log(Level.INFO, "Navigating to: " + dashboard);
+        logger.log(Level.INFO, () -> "Navigating to: " + dashboard);
     }
 
     @Then("I should see a summary of user activity")
@@ -116,18 +116,18 @@ public class MonitorUserMangTest {
                 assertTrue(output.contains(row.get("Value")));
             }
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error viewing user activity summary: " + e.getMessage());
+            logger.log(Level.SEVERE, () -> "Error viewing user activity summary: " + e.getMessage());
         }
     }
 
     @Given("I am on the {string}")
     public void i_am_on_the(String dashboard) {
-        logger.log(Level.INFO, "On page: " + dashboard);
+        logger.log(Level.INFO, () -> "On page: " + dashboard);
     }
 
     @When("I select a date range from {string} to {string}")
     public void i_select_a_date_range_from_to(String startDate, String endDate) {
-        logger.log(Level.INFO, "Filtering by date range: " + startDate + " to " + endDate);
+        logger.log(Level.INFO, () -> "Filtering by date range: " + startDate + " to " + endDate);
         // Add logic to filter by date range
     }
 
@@ -141,13 +141,13 @@ public class MonitorUserMangTest {
                 assertTrue(output.contains(row.get("Value")));
             }
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error viewing filtered activity statistics: " + e.getMessage());
+            logger.log(Level.SEVERE, () -> "Error viewing filtered activity statistics: " + e.getMessage());
         }
     }
 
     @When("I enter a user ID into the {string} field")
     public void i_enter_a_user_id_into_the_field(String field) {
-        logger.log(Level.INFO, "Searching user by ID in field: " + field);
+        logger.log(Level.INFO, () -> "Searching user by ID in field: " + field);
         // Simulate user-specific search by ID
     }
 
@@ -161,25 +161,25 @@ public class MonitorUserMangTest {
                 assertTrue(output.contains(row.get("Value")));
             }
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error viewing user activity details: " + e.getMessage());
+            logger.log(Level.SEVERE, () -> "Error viewing user activity details: " + e.getMessage());
         }
     }
 
     @When("I enter a user name into the {string} field")
     public void i_enter_a_user_name_into_the_field(String field) {
-        logger.log(Level.INFO, "Searching user by name in field: " + field);
+        logger.log(Level.INFO, () -> "Searching user by name in field: " + field);
         // Simulate user-specific search by name
     }
 
     @When("I click {string}")
     public void i_click(String button) {
-        logger.log(Level.INFO, "Clicked: " + button);
+        logger.log(Level.INFO, () -> "Clicked: " + button);
     }
 
     @Then("a downloadable report should be generated")
     public void a_downloadable_report_should_be_generated() {
         reportFileName = "User_Activity_Report_" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + ".csv";
-        logger.log(Level.INFO, "Generated report: " + reportFileName);
+        logger.log(Level.INFO, () -> "Generated report: " + reportFileName);
         assertTrue(reportFileName.endsWith(".csv"));
     }
 
