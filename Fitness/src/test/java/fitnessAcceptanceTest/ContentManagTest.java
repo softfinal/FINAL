@@ -42,7 +42,7 @@ public class ContentManagTest {
         String tipTitle = "Healthy Living Tips";
         String reason = "Not suitable for our platform";
         iRejectFitnessTip(tipTitle, reason);
-        theSubmitterShouldReceiveNotification("Tip rejected with reason: " + reason);
+        theSubmitterShouldReceiveNotification(String.format("Tip rejected with reason: %s", reason));
         theTipShouldNotBePubliclyVisible(tipTitle);
     }
 
@@ -86,13 +86,13 @@ public class ContentManagTest {
     // Scenario 1: Approve Fitness Tip
     @Given("the fitness tip titled {string} is pending approval")
     public void fitnessTipPendingApproval(String tipTitle) {
-        logger.log(Level.INFO, "Fitness tip titled \"{0}\" is pending approval.", tipTitle);
+        logger.log(Level.INFO, "Fitness tip titled \"{0}\" is pending approval.{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     @When("I approve a submitted fitness tip titled {string}")
     public void iApproveFitnessTip(String tipTitle) {
         try {
-            String simulatedInput = String.format("approve\n%s\n", tipTitle);
+            String simulatedInput = String.format("approve%n%s%n", tipTitle);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -107,14 +107,14 @@ public class ContentManagTest {
     @Then("the tip {string} should be publicly visible on the platform")
     public void theTipShouldBePubliclyVisible(String tipTitle) {
         assertTrue(resultMessage.contains("Tip approved successfully!"));
-        logger.log(Level.INFO, "Tip \"{0}\" is now publicly visible.", tipTitle);
+        logger.log(Level.INFO, "Tip \"{0}\" is now publicly visible.{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     // Scenario 2: Reject Fitness Tip
     @When("I reject a submitted fitness tip titled {string} with reason {string}")
     public void iRejectFitnessTip(String tipTitle, String reason) {
         try {
-            String simulatedInput = String.format("reject\n%s\n%s\n", tipTitle, reason);
+            String simulatedInput = String.format("reject%n%s%n%s%n", tipTitle, reason);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -129,25 +129,25 @@ public class ContentManagTest {
     @Then("the submitter should receive a notification {string}")
     public void theSubmitterShouldReceiveNotification(String notification) {
         assertTrue(resultMessage.contains(notification));
-        logger.log(Level.INFO, "Notification sent to submitter: {0}", notification);
+        logger.log(Level.INFO, "Notification sent to submitter: {0}{1}", new Object[] {notification, System.lineSeparator()});
     }
 
     @Then("the tip {string} should not be publicly visible")
     public void theTipShouldNotBePubliclyVisible(String tipTitle) {
         assertTrue(resultMessage.contains("Tip rejected with reason"));
-        logger.log(Level.INFO, "Tip \"{0}\" is no longer publicly visible.", tipTitle);
+        logger.log(Level.INFO, "Tip \"{0}\" is no longer publicly visible.{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     // Scenario 3: Delete Fitness Tip
     @Given("the fitness tip titled {string} is publicly visible")
     public void fitnessTipPubliclyVisible(String tipTitle) {
-        logger.log(Level.INFO, "Fitness tip titled \"{0}\" is publicly visible.", tipTitle);
+        logger.log(Level.INFO, "Fitness tip titled \"{0}\" is publicly visible.{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     @When("I delete the fitness tip titled {string}")
     public void iDeleteFitnessTip(String tipTitle) {
         try {
-            String simulatedInput = String.format("delete\n%s\n", tipTitle);
+            String simulatedInput = String.format("delete%n%s%n", tipTitle);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -162,19 +162,19 @@ public class ContentManagTest {
     @Then("the tip {string} should no longer be visible on the platform")
     public void theTipShouldNoLongerBeVisible(String tipTitle) {
         assertTrue(resultMessage.contains("Tip deleted successfully!"));
-        logger.log(Level.INFO, "Tip \"{0}\" has been deleted and is no longer visible.", tipTitle);
+        logger.log(Level.INFO, "Tip \"{0}\" has been deleted and is no longer visible.{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     // Scenario 4: View Feedback for a Fitness Tip
     @Given("there is feedback on the fitness tip titled {string}")
     public void thereIsFeedbackOnFitnessTip(String tipTitle) {
-        logger.log(Level.INFO, "Feedback exists for fitness tip titled \"{0}\".", tipTitle);
+        logger.log(Level.INFO, "Feedback exists for fitness tip titled \"{0}\".{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     @When("I view feedback for the fitness tip titled {string}")
     public void iViewFeedbackForFitnessTip(String tipTitle) {
         try {
-            String simulatedInput = String.format("view_feedback\n%s\n", tipTitle);
+            String simulatedInput = String.format("view_feedback%n%s%n", tipTitle);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -189,19 +189,19 @@ public class ContentManagTest {
     @Then("I should see all user comments and ratings for {string}")
     public void iShouldSeeAllUserCommentsAndRatingsFor(String tipTitle) {
         assertTrue(resultMessage.contains("Viewing feedback for"));
-        logger.log(Level.INFO, "Viewing all user feedback for the fitness tip titled \"{0}\".", tipTitle);
+        logger.log(Level.INFO, "Viewing all user feedback for the fitness tip titled \"{0}\".{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     // Scenario 5: Remove Inappropriate Feedback
     @Given("there is inappropriate feedback on the fitness tip titled {string}")
     public void thereIsInappropriateFeedbackOnFitnessTip(String tipTitle) {
-        logger.log(Level.INFO, "Inappropriate feedback exists on fitness tip titled \"{0}\".", tipTitle);
+        logger.log(Level.INFO, "Inappropriate feedback exists on fitness tip titled \"{0}\".{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     @When("I remove the inappropriate feedback on {string}")
     public void iRemoveInappropriateFeedback(String tipTitle) {
         try {
-            String simulatedInput = String.format("remove_feedback\n%s\n", tipTitle);
+            String simulatedInput = String.format("remove_feedback%n%s%n", tipTitle);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -216,19 +216,19 @@ public class ContentManagTest {
     @Then("the feedback should no longer be visible under the {string} tip")
     public void theFeedbackShouldNoLongerBeVisibleUnderTip(String tipTitle) {
         assertTrue(resultMessage.contains("Inappropriate feedback removed"));
-        logger.log(Level.INFO, "Inappropriate feedback has been removed from tip titled \"{0}\".", tipTitle);
+        logger.log(Level.INFO, "Inappropriate feedback has been removed from tip titled \"{0}\".{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     // Scenario 6: Respond to Feedback Question
     @Given("there is a feedback question on the fitness tip titled {string}")
     public void thereIsFeedbackQuestionOnFitnessTip(String tipTitle) {
-        logger.log(Level.INFO, "There is a feedback question for fitness tip titled \"{0}\".", tipTitle);
+        logger.log(Level.INFO, "There is a feedback question for fitness tip titled \"{0}\".{1}", new Object[] {tipTitle, System.lineSeparator()});
     }
 
     @When("I respond to the feedback with {string}")
     public void iRespondToFeedback(String response) {
         try {
-            String simulatedInput = String.format("respond_feedback\n%s\n", response);
+            String simulatedInput = String.format("respond_feedback%n%s%n", response);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -243,6 +243,6 @@ public class ContentManagTest {
     @Then("my response should be visible under the feedback question")
     public void myResponseShouldBeVisibleUnderFeedbackQuestion() {
         assertTrue(resultMessage.contains("Response posted successfully!"));
-        logger.log(Level.INFO, "Response has been successfully posted.");
+        logger.log(Level.INFO, "Response has been successfully posted.{0}", System.lineSeparator());
     }
 }
