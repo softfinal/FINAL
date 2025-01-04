@@ -1,4 +1,4 @@
-package fitt;
+package fitnessAcceptanceTest;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
