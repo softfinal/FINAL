@@ -101,11 +101,9 @@ public class ProgramExploration {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
-                    if (data[0].equals(programName)) {
-                        if (logger.isLoggable(Level.INFO)) {
-                            logger.info(String.format(S_S_DIFFICULTY_LEVEL_S_FOCUS_AREA_S, PROGRAM_TITLE, data[0], data[1], data[2]));
-                            logger.info(String.format("Schedule: %s", data[3]));
-                        }
+                    if (data[0].equals(programName) && logger.isLoggable(Level.INFO)) {
+                        logger.info(String.format(S_S_DIFFICULTY_LEVEL_S_FOCUS_AREA_S, PROGRAM_TITLE, data[0], data[1], data[2]));
+                        logger.info(String.format("Schedule: %s", data[3]));
                     }
                 }
             } catch (IOException e) {
@@ -130,10 +128,8 @@ public class ProgramExploration {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
-                    if (data[0].equals(clientId)) {
-                        if (logger.isLoggable(Level.INFO)) {
-                            logger.info(String.format("Program Name: %s - Status: %s", data[1], data[2]));
-                        }
+                    if (data[0].equals(clientId) && logger.isLoggable(Level.INFO)) {
+                        logger.info(String.format("Program Name: %s - Status: %s", data[1], data[2]));
                     }
                 }
             } catch (IOException e) {
@@ -147,14 +143,12 @@ public class ProgramExploration {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data[0].equals(programName)) {
-                    if (logger.isLoggable(Level.INFO)) {
-                        logger.info(String.format("Schedule for %s: %s", data[0], data[3]));
-                    }
+                if (data[0].equals(programName) && logger.isLoggable(Level.INFO)) {
+                    logger.info(String.format("Schedule for %s: %s", data[0], data[3]));
                 }
             }
         } catch (IOException e) {
             logger.severe("Error reading the programs file while viewing schedule: " + e.getMessage());
         }
-    }
+    }      
 }
