@@ -1088,13 +1088,14 @@ public class Function {
 	    try {
 	        while (true) {
 	        	
-	        				printing.printSomething("""
-	        					---- Feedback Management ----
-	        					| 1. Review and Respond       |
-	        					| 2. Back                     |
-	        					------------------------------
-	        					Enter your choice:
-	        				""");
+	        	printing.printSomething("""
+	                    ---- Feedback Management ----
+	                    | 1. Review and Respond       |
+	                    | 2. Back                     |
+	                    ------------------------------
+	                    Enter your choice:
+	                """);
+
 	        			
 
 
