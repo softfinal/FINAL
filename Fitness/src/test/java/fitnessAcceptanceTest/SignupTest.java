@@ -16,7 +16,7 @@ import io.cucumber.java.en.When;
 public class SignupTest {
 
     Function f = new Function();
-    User u = new User();
+    User users = new User();
     Logger logger = Logger.getLogger(SignupTest.class.getName());
 
     @Given("customers")
@@ -27,47 +27,47 @@ public class SignupTest {
 
     @Given("there is a User with User ID {string}, NAME {string}, PASSWORD {string}, phone {string}, address {string}")
     public void thereIsAUserWithUserIDNAMEPASSWORDPhoneAddress(String id, String name, String password, String phone, String address) {
-        u.setId(id);
-        u.setName(name);
-        u.setPassword(password);
-        u.setPhone(phone);
-        u.setAddress(address);
-        u.setType("customer"); // Assuming default type is customer
-        logger.log(Level.INFO, "User initialized: " + name);
+        users.setId(id);
+        users.setName(name);
+        users.setPassword(password);
+        users.setPhone(phone);
+        users.setAddress(address);
+        users.setType("customer"); // Assuming default type is customer
+        logger.log(Level.INFO, String.format("User initialized: %s", name));
     }
 
     @When("the User is registered {string}")
     public void theUserIsRegistered(String filePath) {
         // Simulate user registration
-        boolean registered = u.isRegest(filePath);
+        boolean registered = users.isRegest(filePath);
         if (registered) {
-            User.adduser(u);
+            User.adduser(users);
         }
-        assertTrue("User should be registered successfully.", registered);
+        assertTrue(String.format("User should be registered successfully at path %s.", filePath), registered);
     }
 
     @Then("the User with User ID {string}, NAME {string}, PASSWORD {string}, phone {string}, address {string} is registered in the system")
     public void theUserWithUserIDNAMEPASSWORDPhoneAddressIsRegisteredInTheSystem(String id, String name, String password, String phone, String address) {
-        boolean registered = u.isRegest("mockFilePath"); // Simulated file path
-        assertTrue("User should be registered in the system.", registered);
+        boolean registered = users.isRegest("mockFilePath"); // Simulated file path
+        assertTrue(String.format("User with ID %s should be registered in the system.", id), registered);
     }
 
     @Then("the error message {string} is given")
     public void theErrorMessageIsGiven(String errorMessage) {
-        logger.log(Level.INFO, "Error: " + errorMessage);
+        logger.log(Level.INFO, String.format("Error: %s", errorMessage));
     }
 
     @Test
     public void testUserRegistrationSuccess() {
         // Test successful registration
-        u.setId("001");
-        u.setName("Jane Doe");
-        u.setPassword("securePass");
-        u.setPhone("1234567890");
-        u.setAddress("123 Main Street");
+        users.setId("001");
+        users.setName("Jane Doe");
+        users.setPassword("securePass");
+        users.setPhone("1234567890");
+        users.setAddress("123 Main Street");
 
-        boolean registered = u.isRegest("mockFilePath"); // Simulate registration file
-        assertTrue("User should be successfully registered.", registered);
+        boolean registered = users.isRegest("mockFilePath"); // Simulate registration file
+        assertTrue(String.format("User %s should be successfully registered.", users.getUsername()), registered);
     }
 
     @Test
@@ -93,6 +93,6 @@ public class SignupTest {
 
         // Check if the duplicate user is rejected
         boolean registered = duplicateUser.isRegest(duplicateUser.getId());
-        assertFalse("User registration should fail due to duplicate.", !registered);
+        assertFalse(String.format("User registration for ID %s should fail due to duplicate.", duplicateUser.getId()), !registered);
     }
 }
