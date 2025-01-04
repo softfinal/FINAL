@@ -1,21 +1,23 @@
 package org.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class User {
 
     // Logger instance for logging messages
-    private static final Logger logger = Logger.getLogger(User.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(User.class);
 
     // User attributes
-    String password;
-    String username;
-    String address;
-    String id;
-    String phone;
-    String type;
+    private String password;
+    private String username;
+    private String address;
+    private String id;
+    private String phone;
+    private String type;
     private boolean logged;
     protected static final List<User> users1 = new ArrayList<>();
 
@@ -69,14 +71,14 @@ public class User {
             logged = string.equals(username) && string2.equals(password);
             setLogstate(logged);
 
-            // Only log if login was successful or failed
+            // Log only if login was successful or failed
             if (logged) {
-                logger.info(String.format("Login successful for user: %s", username));
+                logger.debug("Login successful for user: {}", username);
             } else {
-                logger.warning(String.format("Login failed for user: %s", username));
+                logger.warn("Login failed for user: {}", username);
             }
         } else {
-            logger.warning("Username or password cannot be null");
+            logger.warn("Username or password cannot be null");
         }
     }
 
@@ -91,9 +93,9 @@ public class User {
         if (l != null && l.getLogstate()) {
             users1.add(l);
             // Log only if adding the user was successful
-            logger.info(String.format("User '%s' added successfully.", l.getUsername()));
+            logger.debug("User '{}' added successfully.", l.getUsername());
         } else if (l != null) {
-            logger.warning("You should login first to add a user.");
+            logger.warn("You should login first to add a user.");
         }
     }
 
@@ -112,14 +114,14 @@ public class User {
 
             // Log only if the result is meaningful
             if (found) {
-                logger.info(String.format("User '%s' is already registered.", string));
+                logger.debug("User '{}' is already registered.", string);
                 result = false; // User is already registered
             } else {
-                logger.info(String.format("User '%s' is not registered.", string));
+                logger.debug("User '{}' is not registered.", string);
                 result = true; // User is not registered
             }
         } else {
-            logger.warning("Username cannot be null");
+            logger.warn("Username cannot be null");
         }
         return result;  // Return true if the user is not registered, false otherwise
     }
