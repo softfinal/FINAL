@@ -3,7 +3,7 @@ package org.example;
 import java.io.*;
 import java.util.*;
 
-import org.example.Function.AdminPageException;
+
 
 public class Function {
 
@@ -37,7 +37,8 @@ public class Function {
     private static final String FEEDBACK_FILE = C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_FEEDBACK_TXT;
 
     private static final String ADMIN_DASHBOARD_MESSAGE = "Returning to Admin Dashboard...";
-    
+    private static final Random random = new Random();
+
     static final Printing printing = new Printing();
     static final Scanner scanner = new Scanner(System.in);
     
@@ -97,7 +98,7 @@ public class Function {
    
     private String generateUniqueId() {
         // Generate a random 3-digit unique ID
-        return String.format("%03d", new Random().nextInt(900) + 100);
+    	return String.format("%03d", random.nextInt(900) + 100);
     }
 
     private void signUpClient(String id, String name, String email, String phone, String password) throws IOException {
@@ -1072,14 +1073,13 @@ public class Function {
 	    try {
 	        while (true) {
 	        	
-	        	            printing.printSomething("""
-	        	                ---- Feedback Management ----
-	        	                | 1. Review and Respond       |
-	        	                | 2. Back                     |
-	        	                ------------------------------
-	        	                Enter your choice:
-	        	            """);
-
+	        	 printing.printSomething("""
+	                     ---- Feedback Management ----
+	                     | 1. Review and Respond       |
+	                     | 2. Back                     |
+	                     ------------------------------
+	                     Enter your choice:
+	                 """);
 
 	            int choice = getValidChoice(1, 2);
 	            switch (choice) {
