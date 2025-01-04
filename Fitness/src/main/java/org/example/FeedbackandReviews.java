@@ -11,12 +11,24 @@ public class FeedbackandReviews {
 
     private static final Logger logger = Logger.getLogger(FeedbackandReviews.class.getName());
 
-    // Default feedback file path
-    private static final String DEFAULT_FEEDBACK_FILE_PATH = "C:/Users/HP ZBook/git/repository3/fitness/target/feedback.txt";
+    // Customizable feedback file path from environment variable or default
     private static final String FEEDBACK_FILE_PATH = System.getenv("FEEDBACK_FILE_PATH") != null
-            ? System.getenv("FEEDBACK_FILE_PATH")
-            : DEFAULT_FEEDBACK_FILE_PATH;
+            ? System.getenv("FEEDBACK_FILE_PATH") 
+            : "C:/Users/HP ZBook/git/repository3/fitness/target/feedback.txt"; // Default path
+
     private static final String NOTIFICATIONS_FILE_PATH = "notifications.txt";
+
+    // Constructor to optionally pass a custom file path
+    public FeedbackandReviews(String feedbackFilePath) {
+        if (feedbackFilePath != null && !feedbackFilePath.isEmpty()) {
+            this.feedbackFilePath = feedbackFilePath;
+        }
+    }
+
+    // Default constructor using the environment variable or default path
+    public FeedbackandReviews() {
+        // This will use the static FEEDBACK_FILE_PATH value
+    }
 
     // Method for clients to submit feedback
     public void submitFeedback(String clientId, String programId, String feedback) {
@@ -91,6 +103,7 @@ public class FeedbackandReviews {
             logger.log(Level.SEVERE, "An error occurred while updating feedback.", e);
         }
 
+        // Only notify the client if feedback is found and successfully updated
         if (clientId != null) {
             notifyClient(clientId, feedbackId, approve);
         }
