@@ -21,6 +21,7 @@ public class User {
 
     // Default constructor
     public User() {
+        // Add the default user if required
         User.users1.add(new User("loaa", "123", "admin"));
     }
 
@@ -93,6 +94,7 @@ public class User {
     public boolean isRegest(String string) {
         if (string != null) {
             boolean found = false;
+            // Iterate only if necessary (string is not null)
             for (User user : users1) {
                 if (user.getUsername().equals(string)) {
                     found = true;
