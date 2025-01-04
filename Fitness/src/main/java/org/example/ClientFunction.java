@@ -27,7 +27,7 @@ public class ClientFunction {
             int choice = getValidChoice(1, 5);
             switch (choice) {
                 case 1 -> manageAccount(clientId1);
-                case 2 -> explorePrograms(clientId1);
+                case 2 -> explorePrograms();
                 case 3 -> trackProgress(clientId1);
                 case 4 -> giveFeedback(clientId1);
                 case 5 -> {
@@ -79,7 +79,7 @@ public class ClientFunction {
         printing.printSomething("Dietary preferences updated successfully!");
     }
 
-    private void explorePrograms(String clientId) throws IOException {
+    private void explorePrograms() throws IOException {
         printing.printSomething("""
             ---- Program Exploration ----
             | 1. Browse by Difficulty Level  |
