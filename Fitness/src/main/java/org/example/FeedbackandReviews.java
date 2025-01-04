@@ -1,4 +1,4 @@
-package fitt;
+package fitnessAcceptanceTest;
 
 import java.io.*;
 import java.util.ArrayList;
