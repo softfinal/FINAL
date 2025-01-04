@@ -25,16 +25,18 @@ public class FeedbackandReviews {
             boolean isFileCreated = file.createNewFile();
 
             // Log only when the file is created or already exists
-            if (isFileCreated) {
+            if (isFileCreated && logger.isLoggable(Level.INFO)) {
                 logger.info(String.format("Feedback file created successfully at: %s", FEEDBACK_FILE_PATH));
-            } else {
+            } else if (logger.isLoggable(Level.INFO)) {
                 logger.info(String.format("Feedback file already exists at: %s", FEEDBACK_FILE_PATH));
             }
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
                 writer.write(String.format("%s,%s,%s,%s,Pending", UUID.randomUUID(), clientId, programId, feedback));
                 writer.newLine();
-                logger.info("Your feedback has been submitted and is pending approval.");
+                if (logger.isLoggable(Level.INFO)) {
+                    logger.info("Your feedback has been submitted and is pending approval.");
+                }
             }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An error occurred while submitting feedback.", e);
@@ -73,8 +75,10 @@ public class FeedbackandReviews {
                     feedbackFound = true;
                     clientId = data[1];
                     data[4] = approve ? "Approved" : "Rejected";
-                    // Log the approval/rejection of feedback
-                    logger.info(String.format("Feedback ID %s has been %s.", feedbackId, approve ? "approved" : "rejected"));
+                    // Log the approval/rejection of feedback only if it's enabled
+                    if (logger.isLoggable(Level.INFO)) {
+                        logger.info(String.format("Feedback ID %s has been %s.", feedbackId, approve ? "approved" : "rejected"));
+                    }
                 }
                 updatedContent.append(String.join(",", data)).append("\n");
             }
@@ -83,21 +87,23 @@ public class FeedbackandReviews {
         }
 
         // Only log warning and return if feedback was not found
-        if (!feedbackFound) {
+        if (!feedbackFound && logger.isLoggable(Level.WARNING)) {
             logger.warning(String.format("Feedback ID %s not found.", feedbackId));
             return;
         }
 
         // Write the updated content back to the file if feedback is found and updated
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FEEDBACK_FILE_PATH))) {
-            writer.write(updatedContent.toString());
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "An error occurred while updating feedback.", e);
-        }
+        if (feedbackFound) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FEEDBACK_FILE_PATH))) {
+                writer.write(updatedContent.toString());
+            } catch (IOException e) {
+                logger.log(Level.SEVERE, "An error occurred while updating feedback.", e);
+            }
 
-        // Only notify the client if feedback is found and successfully updated
-        if (clientId != null) {
-            notifyClient(clientId, feedbackId, approve);
+            // Only notify the client if feedback is found and successfully updated
+            if (clientId != null) {
+                notifyClient(clientId, feedbackId, approve);
+            }
         }
     }
 
@@ -106,9 +112,11 @@ public class FeedbackandReviews {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOTIFICATIONS_FILE_PATH, true))) {
             writer.write(String.format("%s,Feedback ID %s has been %s.", clientId, feedbackId, approve ? "approved" : "rejected"));
             writer.newLine();
-            // Log notification to client only conditionally
-            logger.info(String.format("Client %s has been notified about the feedback review of ID %s. Status: %s.",
-                    clientId, feedbackId, approve ? "Approved" : "Rejected"));
+            // Log notification to client only if logging is enabled
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info(String.format("Client %s has been notified about the feedback review of ID %s. Status: %s.",
+                        clientId, feedbackId, approve ? "Approved" : "Rejected"));
+            }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "An error occurred while notifying the client.", e);
         }
