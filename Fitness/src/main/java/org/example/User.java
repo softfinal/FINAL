@@ -69,7 +69,7 @@ public class User {
             logged = string.equals(username) && string2.equals(password);
             setLogstate(logged);
 
-            // Log only if login was successful or failed
+            // Only log if login was successful or failed
             if (logged) {
                 logger.info(String.format("Login successful for user: %s", username));
             } else {
@@ -90,8 +90,9 @@ public class User {
         // Only proceed if the user is logged in
         if (l != null && l.getLogstate()) {
             users1.add(l);
+            // Log only if adding the user was successful
             logger.info(String.format("User '%s' added successfully.", l.getUsername()));
-        } else {
+        } else if (l != null) {
             logger.warning("You should login first to add a user.");
         }
     }
