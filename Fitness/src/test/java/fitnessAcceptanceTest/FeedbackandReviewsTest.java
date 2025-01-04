@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+import org.example.FeedbackandReviews;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -97,14 +97,6 @@ public class FeedbackandReviewsTest {
         assertTrue("Feedback should contain the suggestion", feedback.stream().anyMatch(f -> f.contains("program456")));
     }
 
-  /*  @Test
-    @Then("the instructor should be notified of my suggestion")
-    public void the_instructor_should_be_notified_of_my_suggestion() {
-        List<String> notifications = feedbackAndReviews.viewNotifications("instructor123");
-        assertNotNull("Notifications list should not be null", notifications);
-        assertTrue("Instructor should be notified", notifications.size() > 0);
-    }*/
-
     @Test
     @When("I edit my review to change the content to")
     public void i_edit_my_review_to_change_the_content_to() {
@@ -142,32 +134,11 @@ public class FeedbackandReviewsTest {
         System.out.println("Rating flagged for review.");
     }
 
-   /* @Test
-    @Then("I should be notified that my rating is under review")
-    public void i_should_be_notified_that_my_rating_is_under_review() {
-        List<String> notifications = feedbackAndReviews.viewNotifications("client123");
-        assertNotNull("Notifications list should not be null", notifications);
-        
-        // Debugging step
-        notifications.forEach(System.out::println); // Print the notifications to verify content
-        
-        assertTrue("Client should be notified", notifications.size() > 0);
-    }*/
-
     @Test
     @Then("the review should be flagged as inappropriate")
     public void the_review_should_be_flagged_as_inappropriate() {
         System.out.println("Review flagged as inappropriate.");
     }
-
- /*   @Test
-    @Then("I should be notified that my review has been rejected due to inappropriate content")
-    public void i_should_be_notified_that_my_review_has_been_rejected_due_to_inappropriate_content() {
-        List<String> notifications = feedbackAndReviews.viewNotifications("client123");
-        assertNotNull("Notifications list should not be null", notifications);
-        assertTrue("Client should be notified of rejection", 
-                   notifications.stream().anyMatch(n -> n.contains("rejected due to inappropriate content")));
-    }*/
 
     @Test
     @Given("I have already rated a program with stars")
