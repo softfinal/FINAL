@@ -5,7 +5,12 @@ import java.util.*;
 
 public class Function {
 
-    private static final String ERROR_WRITING_TO_FILE = "Error writing to file: ";
+    private static final String NOT_FOUND = " not found.";
+	private static final String ERROR_READING_FILE = "Error reading file: ";
+	private static final String USER_WITH_ID = "User with ID ";
+	private static final String CLIENT = "Client";
+	private static final String INSTRUCTOR = "Instructor";
+	private static final String ERROR_WRITING_TO_FILE = "Error writing to file: ";
 	private static final String ACTIVE = ",Active";
 	private static final String INVALID_CHOICE_TRY_AGAIN = "Invalid choice. Try again.";
 	private static final String APPROVE = "approve";
@@ -187,14 +192,13 @@ public class Function {
         String program = scanner.nextLine();
 
         // Generate unique 3-digit ID
-        //String id = String.format("%03d", new Random().nextInt(900) + 100);
         String id = generateUniqueId();
         printing.printSomething("User ID assigned: " + id);
         
         
 
         
-        String userTypeString = (userType == 1) ? "Client" : "Instructor";
+        String userTypeString = (userType == 1) ? CLIENT : INSTRUCTOR;
         String status = PENDING_APPROVAL;
 
         String userRecord = id + "," + name + "," + email + "," + phone + "," + program + "," + userTypeString + "," + status;
@@ -231,7 +235,7 @@ public class Function {
         boolean foundInInstructors = userExistsInFile(C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_INSTRUCTORS_TXT, userId);
 
         if (!foundInClients && !foundInInstructors) {
-            printing.printSomething("User with ID " + userId + NOT_FOUND_IN_CLIENTS_OR_INSTRUCTORS);
+            printing.printSomething(USER_WITH_ID + userId + NOT_FOUND_IN_CLIENTS_OR_INSTRUCTORS);
             return; // Exit the method if ID is not found
         }
 
@@ -291,8 +295,8 @@ public class Function {
         if (userFound) {
             // Rewrite the file with updated records
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-                for (String record : updatedRecords) {
-                    writer.write(record);
+                for (String updatRecord : updatedRecords) {
+                    writer.write(updatRecord);
                     writer.newLine();
                 }
             }
@@ -322,7 +326,7 @@ public class Function {
         }
 
         // If not found in either file
-        printing.printSomething("User with ID " + userId + NOT_FOUND_IN_CLIENTS_OR_INSTRUCTORS);
+        printing.printSomething(USER_WITH_ID + userId + NOT_FOUND_IN_CLIENTS_OR_INSTRUCTORS);
     }
     private boolean removeUserFromFile(String filePath, String userId) throws IOException {
         File file = new File(filePath);
@@ -344,8 +348,8 @@ public class Function {
         if (userFound) {
             // Rewrite the file with updated records
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-                for (String record : updatedRecords) {
-                    writer.write(record);
+                for (String updatedRecord : updatedRecords) {
+                    writer.write(updatedRecord);
                     writer.newLine();
                 }
             }
@@ -358,8 +362,8 @@ public class Function {
         printing.printSomething("Listing all users pending approval:\n");
 
         // List all pending approvals for clients and instructors
-        listPendingApprovals(C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_CLIENTS_TXT, "Client");
-        listPendingApprovals(C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_INSTRUCTORS_TXT, "Instructor");
+        listPendingApprovals(C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_CLIENTS_TXT, CLIENT);
+        listPendingApprovals(C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_INSTRUCTORS_TXT, INSTRUCTOR);
 
         printing.printSomething("\nEnter User ID to approve: ");
         String userId = scanner.next(); // Get user ID
@@ -389,7 +393,7 @@ public class Function {
             printing.printSomething(INSTRUCTOR_WITH_ID + userId + " approved successfully!");
             updateInstructorInEnrollments(userId); // Link the instructor to the program in enrollments
         } else {
-            printing.printSomething("User with ID " + userId + NOT_FOUND_IN_CLIENTS_OR_INSTRUCTORS);
+            printing.printSomething(USER_WITH_ID + userId + NOT_FOUND_IN_CLIENTS_OR_INSTRUCTORS);
         }
     }
     private void addEnrollmentForClient(String clientId) throws IOException {
@@ -520,7 +524,7 @@ public class Function {
                 printing.printSomething("No " + userType + "s pending approval.");
             }
         } catch (IOException e) {
-            printing.printError("Error reading file: " + e.getMessage());
+            printing.printError(ERROR_READING_FILE + e.getMessage());
         }
     }
 
@@ -838,7 +842,7 @@ public class Function {
             }
         } catch (IOException e) {
             printing.printError("Error reading articles file: " + e.getMessage());
-            return null;
+            return new ArrayList<>();
         }
         return pendingArticles;
     }
@@ -890,7 +894,7 @@ public class Function {
         if (articleFound) {
             printing.printSomething("Article with ID " + articleIdToApprove + " has been approved!");
         } else {
-            printing.printSomething("Article ID " + articleIdToApprove + " not found.");
+            printing.printSomething("Article ID " + articleIdToApprove + NOT_FOUND);
         }
     }
 
@@ -996,7 +1000,7 @@ public class Function {
 	    if (contentFound) {
 	        printing.printSomething("Content with ID " + contentIdToProcess + " has been " + (action.equals(APPROVE) ? "approved!" : "rejected and deleted!"));
 	    } else {
-	        printing.printSomething("Content ID " + contentIdToProcess + " not found.");
+	        printing.printSomething("Content ID " + contentIdToProcess + NOT_FOUND);
 	    }
 	}
 	public void deleteContent(String contentId, String filePath) {
@@ -1014,18 +1018,18 @@ public class Function {
 	            }
 	        }
 	    } catch (IOException e) {
-	        printing.printError("Error reading file: " + e.getMessage());
+	        printing.printError(ERROR_READING_FILE + e.getMessage());
 	        return;
 	    }
 
 	    if (!contentFound) {
-	        printing.printSomething("Content ID " + contentId + " not found.");
+	        printing.printSomething("Content ID " + contentId + NOT_FOUND);
 	        return;
 	    }
 
 	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-	        for (String record : updatedContent) {
-	            writer.write(record);
+	        for (String updatedContents : updatedContent) {
+	            writer.write(updatedContents);
 	            writer.newLine();
 	        }
 	        printing.printSomething("Content with ID " + contentId + " has been deleted successfully.");
@@ -1038,13 +1042,13 @@ public class Function {
 	private void handleFeedback() {
 	    try {
 	        while (true) {
-	            printing.printSomething("""
-	                ---- Feedback Management ----
-	                | 1. Review and Respond       |
-	                | 2. Back                     |
-	                --------------------------------
-	                Enter your choice:
-	            """);
+	        	printing.printSomething("""
+	        			---- Feedback Management ----
+	        			| 1. Review and Respond       |
+	        			| 2. Back                     |
+	        			--------------------------------
+	        			Enter your choice:
+	        		""");
 
 	            int choice = getValidChoice(1, 2);
 	            switch (choice) {
@@ -1087,7 +1091,7 @@ public class Function {
 	    printing.printSomething("+--------+-----------+-----------+-------------------------+----------+");
 
 	    for (String[] feedback : feedbackList) {
-	        String responseStatus = feedback.length > 5 && feedback[5] != null ? feedback[5] : "No response yet";
+	        
 	        printing.printSomething(String.format("| %-6s | %-9s | %-9s | %-23s | %-8s |",
 	                feedback[0], feedback[1], feedback[2], feedback[3], feedback[4]));
 	    }
@@ -1123,7 +1127,7 @@ public class Function {
 	    }
 
 	    if (!feedbackFound) {
-	        printing.printSomething("Feedback ID " + feedbackId + " not found.");
+	        printing.printSomething("Feedback ID " + feedbackId + NOT_FOUND);
 	        return;
 	    }
 
@@ -1159,13 +1163,13 @@ public class Function {
  	    }
 
  	    if (!feedbackFound) {
- 	        printing.printSomething("Feedback ID " + feedbackId + " not found.");
+ 	        printing.printSomething("Feedback ID " + feedbackId + NOT_FOUND);
  	        return;
  	    }
 
  	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(feedbackFilePath))) {
- 	        for (String record : updatedFeedback) {
- 	            writer.write(record);
+ 	        for (String updatedFeedbacks : updatedFeedback) {
+ 	            writer.write(updatedFeedbacks);
  	            writer.newLine();
  	        }
  	        printing.printSomething("Feedback with ID " + feedbackId + " has been removed successfully.");
@@ -1213,7 +1217,7 @@ public class Function {
 
         switch (choice) {
             case 1 -> addSubscriptionPlan(clientPlansFile, false);
-            case 2 -> updateSubscriptionPlan(clientPlansFile, false);
+            case 2 -> updateSubscriptionPlan(clientPlansFile);
             case 3 -> deactivateSubscriptionPlan(clientPlansFile);
             case 4 -> viewAllSubscriptionPlans(clientPlansFile, false);
             case 5 -> printing.printSomething("Returning to Subscription Management...");
@@ -1238,7 +1242,7 @@ public class Function {
 
         switch (choice) {
             case 1 -> addSubscriptionPlan(instructorPlansFile, true);
-            case 2 -> updateSubscriptionPlan(instructorPlansFile, true);
+            case 2 -> updateSubscriptionPlan(instructorPlansFile);
             case 3 -> deactivateSubscriptionPlan(instructorPlansFile);
             case 4 -> viewAllSubscriptionPlans(instructorPlansFile, true);
             case 5 -> printing.printSomething("Returning to Subscription Management...");
@@ -1277,7 +1281,7 @@ public class Function {
     }
 
     private void appendToFile1(String filePath, String data) throws IOException {
-        System.out.println("Writing to file: " + filePath); // Debugging log
+    	printing.printSomething("Writing to file: " + filePath); // Debugging log
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(data);
             writer.newLine();
@@ -1287,7 +1291,7 @@ public class Function {
         }
     }
 
-    public void updateSubscriptionPlan(String filePath, boolean append) throws IOException {
+    public void updateSubscriptionPlan(String filePath) throws IOException {
         File file = new File(filePath);
         if (!file.exists()) {
             throw new FileNotFoundException("File not found: " + filePath);
@@ -1423,38 +1427,37 @@ public class Function {
     private boolean logState; // Track login state
 
     public void signInFunction() throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        Printing printing = new Printing();
+        Scanner scanners = new Scanner(System.in);
+        Printing printings = new Printing();
 
-        printing.printSomething("Enter Username: ");
-        String username = scanner.nextLine();
+        printings.printSomething("Enter Username: ");
+        String username = scanners.nextLine();
 
-        printing.printSomething("Enter Password: ");
-        String password = scanner.nextLine();
+        printings.printSomething("Enter Password: ");
+        String password = scanners.nextLine();
 
         // Example credentials for Admin
         String adminUsername = "loaa";
         String adminPassword = "12345";
 
         if (username.equals(adminUsername) && password.equals(adminPassword)) {
-            printing.printSomething("Admin login successful! Redirecting to admin settings...");
+            printings.printSomething("Admin login successful! Redirecting to admin settings...");
             setLogstate(true);
             adminPage(username); // Open admin settings
         } else {
             // Validate against clients.txt
             String role = validateCredentials(username, password);
-            if ("Client".equals(role)) {
-                printing.printSomething("Client login successful! Welcome, " + username + ".");
+            if (CLIENT.equals(role)) {
+                printings.printSomething("Client login successful! Welcome, " + username + ".");
                 setLogstate(true);
                 ClientFunction clientFunction = new ClientFunction();
                 clientFunction.clientDashboard(username); // Redirect to Client Dashboard
-            } else if ("Instructor".equals(role)) {
-                printing.printSomething("Instructor login successful! Welcome, " + username + ".");
+            } else if (INSTRUCTOR.equals(role)) {
+                printings.printSomething("Instructor login successful! Welcome, " + username + ".");
                 setLogstate(true);
-               // InstructorFunction instructorFunction = new InstructorFunction();
-              //  instructorFunction.instructorDashboard(username); // Redirect to Instructor Dashboard
+               
             } else {
-                printing.printSomething("Invalid username or password. Please try again.");
+                printings.printSomething("Invalid username or password. Please try again.");
                 setLogstate(false);
             }
         }
@@ -1476,12 +1479,12 @@ public class Function {
 
                     if (username.equals(fileUsername) && password.equals(filePassword) && APPROVED.equals(status)) {
                         // If credentials match and status is "Approved", return "Client" role
-                        return "Client";  // You can also check for "Instructor" role here if needed
+                        return CLIENT;  // You can also check for "Instructor" role here if needed
                     }
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+        	printing.printSomething(ERROR_READING_FILE + e.getMessage());
         }
 
         return null; // Return null if no match is found or if the account is not approved
