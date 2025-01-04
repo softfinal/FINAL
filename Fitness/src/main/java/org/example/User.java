@@ -69,7 +69,7 @@ public class User {
             logged = string.equals(username) && string2.equals(password);
             setLogstate(logged);
 
-            // Only log if login was successful or failed
+            // Log only if login was successful or failed
             if (logged) {
                 logger.info(String.format("Login successful for user: %s", username));
             } else {
