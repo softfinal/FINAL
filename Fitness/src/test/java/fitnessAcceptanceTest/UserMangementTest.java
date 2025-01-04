@@ -74,7 +74,7 @@ public class UserMangementTest {
     @Then("the system shows a duplicate error message {string}")
     public void systemShowsDuplicateError(String errorMessage) {
         assertTrue(resultMessage.contains(errorMessage));
-        logger.log(Level.WARNING, errorMessage);
+        logger.log(Level.WARNING, "Duplicate error: " + errorMessage);
     }
 
     // Scenario 4: Add User with Invalid Email
@@ -96,8 +96,8 @@ public class UserMangementTest {
 
     @Then("the system shows an invalid email error {string}")
     public void systemShowsInvalidEmailError(String errorMessage) {
-        assertTrue(resultMessage.contains(errorMessage));
-        logger.log(Level.WARNING, errorMessage);
+        assertTrue("Expected invalid email error message, but got: " + resultMessage, resultMessage.contains(errorMessage));
+        logger.log(Level.SEVERE, "Invalid email error occurred: " + errorMessage);
     }
 
     // Scenario 5: Update User Details
