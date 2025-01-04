@@ -49,13 +49,12 @@ public class SubscmangTest {
 
     @Then("the new subscription plan {string} for {string} should be available for selection")
     public void subscriptionPlanAvailable(String planName, String type) {
-        assertTrue(resultMessage.contains("Subscription plan added successfully!"));
+        assertTrue(String.format("Expected success message, but got: %s", resultMessage), resultMessage.contains("Subscription plan added successfully!"));
         logger.log(Level.INFO, String.format("Subscription plan '%s' for '%s' is available for selection.", planName, type));
     }
 
     // Scenario 2: Update an Existing Subscription Plan
     @Test
-    
     public void testUpdateSubscriptionPlan() {
         try {
             // Create a temporary file for testing
@@ -72,7 +71,7 @@ public class SubscmangTest {
             try (BufferedReader reader = new BufferedReader(new FileReader(tempFile))) {
                 String line = reader.readLine();
                 if (line != null) {
-                    logger.log(Level.INFO, "Initial content in file: " + line);
+                    logger.log(Level.INFO, String.format("Initial content in file: %s", line));
                 } else {
                     logger.log(Level.SEVERE, "No content found in the file before update.");
                 }
@@ -84,15 +83,15 @@ public class SubscmangTest {
             System.setIn(inputStream);
 
             // Call the method to update the subscription plan
-            adminFunctions.updateSubscriptionPlan(tempFile.getAbsolutePath(), false);
+            adminFunctions.updateSubscriptionPlan(tempFile.getAbsolutePath());
             System.setIn(System.in); // Restore the original input stream
 
             // Verify the update by reading the file again
             try (BufferedReader reader = new BufferedReader(new FileReader(tempFile))) {
                 String updatedLine = reader.readLine();
                 if (updatedLine != null) {
-                    logger.log(Level.INFO, "Updated content in file: " + updatedLine);
-                    assertTrue(updatedLine.contains("Basic,30/mo,Yearly,Premium Features,Active"));
+                    logger.log(Level.INFO, String.format("Updated content in file: %s", updatedLine));
+                    assertTrue(String.format("Expected updated content to contain: %s", "Basic,30/mo,Yearly,Premium Features,Active"), updatedLine.contains("Basic,30/mo,Yearly,Premium Features,Active"));
                 } else {
                     logger.log(Level.SEVERE, "No content found after update.");
                     assertFalse("Failed to update subscription plan.", true);
@@ -101,10 +100,11 @@ public class SubscmangTest {
 
             System.out.println("Test passed: Subscription plan updated successfully.");
         } catch (Exception e) {
-            System.err.println("Test failed: " + e.getMessage());
+            System.err.println(String.format("Test failed: %s", e.getMessage()));
             assertFalse("Error occurred during test execution.", true);
         }
     }
+
     @Given("a subscription plan {string} for {string} exists")
     public void subscriptionPlanExists(String planName, String type) {
         logger.log(Level.INFO, String.format("Subscription plan '%s' for '%s' exists in the system.", planName, type));
@@ -117,7 +117,7 @@ public class SubscmangTest {
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
-            adminFunctions.updateSubscriptionPlan("subscriptions.txt", false);
+            adminFunctions.updateSubscriptionPlan("subscriptions.txt");
             resultMessage = "Subscription plan updated successfully!";
         } catch (Exception e) {
             resultMessage = e.getMessage();
@@ -128,7 +128,7 @@ public class SubscmangTest {
 
     @Then("the subscription plan {string} should reflect the updated price {string}")
     public void subscriptionPlanUpdated(String planName, String updatedPrice) {
-        assertTrue(resultMessage.contains("updated successfully"));
+        assertTrue(String.format("Expected success message, but got: %s", resultMessage), resultMessage.contains("updated successfully"));
         logger.log(Level.INFO, String.format("Subscription plan '%s' reflects the updated price '%s'.", planName, updatedPrice));
     }
 
@@ -157,7 +157,7 @@ public class SubscmangTest {
 
     @Then("the subscription plan {string} should no longer be available for new users")
     public void subscriptionPlanNoLongerAvailable(String planName) {
-        assertTrue(resultMessage.contains("deactivated successfully"));
+        assertTrue(String.format("Expected success message, but got: %s", resultMessage), resultMessage.contains("deactivated successfully"));
         logger.log(Level.INFO, String.format("Subscription plan '%s' is no longer available for new users.", planName));
     }
 
@@ -180,7 +180,7 @@ public class SubscmangTest {
 
     @Then("I should see a list of all active plans with details:")
     public void listActivePlans() {
-        assertTrue(resultMessage.contains("displayed successfully"));
+        assertTrue(String.format("Expected success message, but got: %s", resultMessage), resultMessage.contains("displayed successfully"));
         logger.log(Level.INFO, "Active subscription plans are displayed with correct details.");
     }
 }
