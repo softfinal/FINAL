@@ -62,7 +62,7 @@ public class User {
             logged = string.equals(username) && string2.equals(password);
             setLogstate(logged);
 
-            // Log based on login state
+            // Only log the success if login was successful
             if (logged) {
                 logger.info(String.format("Login successful for user: %s", username));
             } else {
@@ -84,6 +84,7 @@ public class User {
         User u = new User();
         if (u.getLogstate()) {
             users1.add(l);
+            // Log only if the user was successfully added
             logger.info(String.format("User '%s' added successfully.", l.getUsername()));
         } else {
             logger.warning("You should login first");
@@ -93,12 +94,19 @@ public class User {
     // Method to check if a user is registered
     public boolean isRegest(String string) {
         if (string != null) {
+            boolean found = false;
             for (User user : users1) {
                 if (user.getUsername().equals(string)) {
-                    return false;  // User already registered
+                    found = true;
+                    break; // No need to check further if user is found
                 }
             }
-            return true;  // User not registered
+            if (found) {
+                logger.info(String.format("User '%s' is already registered.", string));
+            } else {
+                logger.info(String.format("User '%s' is not registered.", string));
+            }
+            return !found;  // Return true if the user is not registered
         } else {
             logger.warning("Username cannot be null");
             return false;
