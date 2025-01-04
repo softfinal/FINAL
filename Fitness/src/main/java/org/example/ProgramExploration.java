@@ -1,6 +1,10 @@
 package org.example;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,8 +12,8 @@ import java.util.logging.Logger;
 public class ProgramExploration {
 
     private static final String PROGRAM_TITLE = "Program Title: ";
-    private static final String PROGRAMS_TXT = "C:\\Users\\Hp Zbook\\git\\repository3\\Fitness\\target\\programs.txt";
-    private static final Logger logger = Logger.getLogger(ProgramExploration.class.getName()); // Logger instance
+    private static final String PROGRAMS_TXT = "C:/Users/Hp Zbook/git/repository3/Fitness/target/programs.txt";
+    private static final Logger logger = Logger.getLogger(ProgramExploration.class.getName());
 
     public static class Program {
         private String name;
@@ -60,7 +64,13 @@ public class ProgramExploration {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                // Conditionally log only if the program has valid data
+                if (data.length >= 3 && data[0] != null && !data[0].isEmpty()) {
+                    logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                } else {
+                    // Log a warning if data is missing or invalid
+                    logger.warning("Program data is incomplete or invalid: " + line);
+                }
             }
         } catch (IOException e) {
             logger.severe("Error reading the programs file: " + e.getMessage());
@@ -81,12 +91,13 @@ public class ProgramExploration {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
+                    // Conditionally log filtered programs
                     if (data[1].equals(difficultyLevel) && data[2].equals(focusArea)) {
                         logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
                     }
                 }
             } catch (IOException e) {
-                logger.severe("Error reading the programs file while filtering: " + e.getMessage());
+                logger.severe("Error reading the programs file: " + e.getMessage());
             }
         }
 
@@ -103,7 +114,7 @@ public class ProgramExploration {
                     }
                 }
             } catch (IOException e) {
-                logger.severe("Error reading the programs file while viewing details: " + e.getMessage());
+                logger.severe("Error reading the programs file: " + e.getMessage());
             }
         }
 
@@ -111,7 +122,7 @@ public class ProgramExploration {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("subscriptions.txt", true))) {
                 writer.write(clientId + "," + programName + ",Enrolled");
                 writer.newLine();
-                logger.info("Client " + clientId + " has successfully enrolled in the program " + programName);
+                logger.info("You have successfully enrolled in the program.");
             } catch (IOException e) {
                 logger.severe("Error enrolling in the program: " + e.getMessage());
             }
@@ -123,11 +134,11 @@ public class ProgramExploration {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[0].equals(clientId)) {
-                        logger.info(String.format("Program Name: %s - Status: %s", data[1], data[2]));
+                        logger.info("Program Name: " + data[1] + " - Status: " + data[2]);
                     }
                 }
             } catch (IOException e) {
-                logger.severe("Error reading the subscriptions file: " + e.getMessage());
+                logger.severe("Error reading enrolled programs: " + e.getMessage());
             }
         }
     }
@@ -138,11 +149,11 @@ public class ProgramExploration {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data[0].equals(programName)) {
-                    logger.info("Schedule for " + data[0] + ": " + data[3]);
+                    logger.info(String.format("Schedule for %s: %s", data[0], data[3]));
                 }
             }
         } catch (IOException e) {
-            logger.severe("Error reading the programs file while viewing schedule: " + e.getMessage());
+            logger.severe("Error reading the programs file: " + e.getMessage());
         }
     }
 }
