@@ -10,7 +10,8 @@ public class ClientFunction {
 	static final Scanner scanner = new Scanner(System.in);
 
     public void clientDashboard(String clientId) throws IOException {
-        printing.printSomething("Welcome to the Client Dashboard, " + clientId + "!");
+    	String clientId1 = clientId;
+        printing.printSomething("Welcome to the Client Dashboard, " + clientId1 + "!");
         while (true) {
             printing.printSomething("""
                 ---- Client Options ----
@@ -25,10 +26,10 @@ public class ClientFunction {
 
             int choice = getValidChoice(1, 5);
             switch (choice) {
-                case 1 -> manageAccount(clientId);
-                case 2 -> explorePrograms(clientId);
-                case 3 -> trackProgress(clientId);
-                case 4 -> giveFeedback(clientId);
+                case 1 -> manageAccount(clientId1);
+                case 2 -> explorePrograms(clientId1);
+                case 3 -> trackProgress(clientId1);
+                case 4 -> giveFeedback(clientId1);
                 case 5 -> {
                     printing.printSomething("Logging out...");
                     return;
