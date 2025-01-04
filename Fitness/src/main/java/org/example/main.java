@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
 	    public static void main(String[] args) throws Exception {
 	        Function functions = new Function(); // Instance of Functions class
