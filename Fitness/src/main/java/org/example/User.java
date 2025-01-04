@@ -34,7 +34,9 @@ public class User {
 
     // Setter for type
     public void setType(String string) {
-        this.type = string;
+        if (string != null) {
+            this.type = string;
+        }
     }
 
     // Setter for login state
@@ -49,12 +51,16 @@ public class User {
 
     // Setter for username
     public void setUserName(String string) {
-        this.username = string;
+        if (string != null) {
+            this.username = string;
+        }
     }
 
     // Setter for password
     public void setPass(String string2) {
-        this.password = string2;
+        if (string2 != null) {
+            this.password = string2;
+        }
     }
 
     // Method to login by matching username and password
@@ -92,6 +98,7 @@ public class User {
 
     // Method to check if a user is registered
     public boolean isRegest(String string) {
+        boolean result = false;
         if (string != null) {
             boolean found = false;
             // Iterate only if necessary (string is not null)
@@ -105,28 +112,36 @@ public class User {
             // Log only if the result is meaningful
             if (found) {
                 logger.info(String.format("User '%s' is already registered.", string));
+                result = false; // User is already registered
             } else {
                 logger.info(String.format("User '%s' is not registered.", string));
+                result = true; // User is not registered
             }
-            return !found;  // Return true if the user is not registered
         } else {
             logger.warning("Username cannot be null");
-            return false;
         }
+        return result;  // Return true if the user is not registered, false otherwise
     }
 
     // Setter for user ID
     public void setId(String string) {
-        this.id = string;
+        if (string != null) {
+            this.id = string;
+        }
     }
 
     // Setter for phone number
     public void setPhone(String string) {
-        this.phone = string;
+        if (string != null) {
+            this.phone = string;
+        }
     }
 
     // Setter for address
     public void setAddress(String string) {
-        this.address = string;
+        if (string != null) {
+            this.address = string;
+        }
     }
 }
+
