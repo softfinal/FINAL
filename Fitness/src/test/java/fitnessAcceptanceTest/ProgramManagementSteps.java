@@ -1,5 +1,5 @@
-//package fitnessAcceptanceTest;
-//
+package fitnessAcceptanceTest;
+
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.*;
