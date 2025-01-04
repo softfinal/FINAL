@@ -37,7 +37,7 @@ public class Function {
     private static final String FEEDBACK_FILE = C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_FEEDBACK_TXT;
 
     private static final String ADMIN_DASHBOARD_MESSAGE = "Returning to Admin Dashboard...";
-    private static final Random random = new Random();
+private static final SecureRandom random = new SecureRandom();
 
     static final Printing printing = new Printing();
     static final Scanner scanner = new Scanner(System.in);
