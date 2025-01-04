@@ -151,7 +151,12 @@ public class FeedbackandReviewsTest {
     @When("I try to submit the same star rating again")
     public void i_try_to_submit_the_same_star_rating_again() {
         int stars = 3;
-        feedbackAndReviews.submitFeedback("client123", "program456", "Rating: " + stars + " stars");
+        boolean result = feedbackAndReviews.checkDuplicateRating("client123", "program456", stars);
+        if (result) {
+            System.out.println("Duplicate rating detected. Cannot resubmit.");
+        } else {
+            feedbackAndReviews.submitFeedback("client123", "program456", "Rating: " + stars + " stars");
+        }
     }
 
     @Test
