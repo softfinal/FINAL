@@ -1,4 +1,4 @@
-package fitt;  // Make sure this matches your project's structure
+package fitnessAcceptanceTest;  // Make sure this matches your project's structure
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
