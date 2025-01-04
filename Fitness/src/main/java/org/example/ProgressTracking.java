@@ -68,9 +68,13 @@ public class ProgressTracking {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(MILESTONES_TXT, true))) {
             writer.write(clientId + "," + weight + "," + bmi + "," + date);
             writer.newLine();
-            logger.info(String.format("Milestone recorded for client %s", clientId));
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info(String.format("Milestone recorded for client %s", clientId));
+            }
         } catch (IOException e) {
-            logger.severe(String.format("Error writing milestone: %s", e.getMessage()));
+            if (logger.isLoggable(Level.SEVERE)) {
+                logger.severe(String.format("Error writing milestone: %s", e.getMessage()));
+            }
         }
     }
 
@@ -87,7 +91,9 @@ public class ProgressTracking {
                 }
             }
         } catch (IOException e) {
-            logger.severe(String.format("Error reading milestones: %s", e.getMessage()));
+            if (logger.isLoggable(Level.SEVERE)) {
+                logger.severe(String.format("Error reading milestones: %s", e.getMessage()));
+            }
         }
         return milestones;
     }
@@ -97,9 +103,13 @@ public class ProgressTracking {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("attendance.txt", true))) {
             writer.write(clientId + "," + programId + "," + attended + "," + date);
             writer.newLine();
-            logger.info(String.format("Attendance recorded for client %s on %s", clientId, date));
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info(String.format("Attendance recorded for client %s on %s", clientId, date));
+            }
         } catch (IOException e) {
-            logger.severe(String.format("Error writing attendance: %s", e.getMessage()));
+            if (logger.isLoggable(Level.SEVERE)) {
+                logger.severe(String.format("Error writing attendance: %s", e.getMessage()));
+            }
         }
     }
 
@@ -115,7 +125,9 @@ public class ProgressTracking {
                 }
             }
         } catch (IOException e) {
-            logger.severe(String.format("Error reading attendance: %s", e.getMessage()));
+            if (logger.isLoggable(Level.SEVERE)) {
+                logger.severe(String.format("Error reading attendance: %s", e.getMessage()));
+            }
         }
         return attendanceList;
     }
@@ -125,9 +137,13 @@ public class ProgressTracking {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("achievements.txt", true))) {
             writer.write(clientId + "," + achievementName + "," + description);
             writer.newLine();
-            logger.info(String.format("Achievement '%s' added for client %s", achievementName, clientId));
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info(String.format("Achievement '%s' added for client %s", achievementName, clientId));
+            }
         } catch (IOException e) {
-            logger.severe(String.format("Error writing achievement: %s", e.getMessage()));
+            if (logger.isLoggable(Level.SEVERE)) {
+                logger.severe(String.format("Error writing achievement: %s", e.getMessage()));
+            }
         }
     }
 
@@ -148,14 +164,20 @@ public class ProgressTracking {
                 }
             }
         } catch (IOException e) {
-            logger.severe(String.format("Error during milestone removal: %s", e.getMessage()));
+            if (logger.isLoggable(Level.SEVERE)) {
+                logger.severe(String.format("Error during milestone removal: %s", e.getMessage()));
+            }
         }
 
         // Replace the original file with the updated file
         if (originalFile.delete() && tempFile.renameTo(originalFile)) {
-            logger.info(String.format("Weight removed successfully for client ID: %s", clientId));
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info(String.format("Weight removed successfully for client ID: %s", clientId));
+            }
         } else {
-            logger.severe("Failed to update milestones file.");
+            if (logger.isLoggable(Level.WARNING)) {
+                logger.warning("Failed to update milestones file.");
+            }
         }
     }
 
