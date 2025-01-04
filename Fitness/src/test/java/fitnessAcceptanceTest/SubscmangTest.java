@@ -34,7 +34,7 @@ public class SubscmangTest {
     @When("I add a new subscription plan with the following details:")
     public void addNewSubscriptionPlan() {
         try {
-            String simulatedInput = "Premium\n50/mo\nMonthly\nFeature1,Feature2\n";
+            String simulatedInput = String.format("Premium%n50/mo%nMonthly%nFeature1,Feature2%n");
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -78,7 +78,7 @@ public class SubscmangTest {
             }
 
             // Simulated input for updating the subscription plan
-            String simulatedInput = "Basic\n30/mo\nYearly\nPremium Features\n";
+            String simulatedInput = String.format("Basic%n30/mo%nYearly%nPremium Features%n");
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -113,7 +113,7 @@ public class SubscmangTest {
     @When("I update the subscription plan {string} with the new price {string}")
     public void updateSubscriptionPlan(String planName, String newPrice) {
         try {
-            String simulatedInput = String.format("%s\n%s\n", planName, newPrice);
+            String simulatedInput = String.format("%s%n%s%n", planName, newPrice);
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
@@ -142,7 +142,7 @@ public class SubscmangTest {
     @When("I deactivate the subscription plan {string}")
     public void deactivateSubscriptionPlan(String planName) {
         try {
-            String simulatedInput = planName + "\n";
+            String simulatedInput = planName + "%n";
             InputStream inputStream = new ByteArrayInputStream(simulatedInput.getBytes());
             System.setIn(inputStream);
 
