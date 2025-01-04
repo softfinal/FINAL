@@ -1,14 +1,15 @@
-
 package org.example;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ProgramExploration {
+
+    private static final String PROGRAM_TITLE = "Program Title: ";
+    private static final String PROGRAMS_TXT = "C:\\Users\\Hp Zbook\\git\\repository3\\Fitness\\target\\programs.txt";
+    private static final Logger logger = Logger.getLogger(ProgramExploration.class.getName()); // Logger instance
 
     public static class Program {
         private String name;
@@ -55,14 +56,14 @@ public class ProgramExploration {
     }
 
     public void listAvailablePrograms() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("programs.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                System.out.println("Program Title: " + data[0] + ", Difficulty Level: " + data[1] + ", Focus Area: " + data[2]);
+                logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("Error reading the programs file: " + e.getMessage());
         }
     }
 
@@ -76,33 +77,33 @@ public class ProgramExploration {
         }
 
         public void filterPrograms(String difficultyLevel, String focusArea) {
-            try (BufferedReader reader = new BufferedReader(new FileReader("programs.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[1].equals(difficultyLevel) && data[2].equals(focusArea)) {
-                        System.out.println("Program Title: " + data[0] + ", Difficulty Level: " + data[1] + ", Focus Area: " + data[2]);
+                        logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.severe("Error reading the programs file while filtering: " + e.getMessage());
             }
         }
 
         public void viewProgramDetails(String programName) {
-            try (BufferedReader reader = new BufferedReader(new FileReader("programs.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[0].equals(programName)) {
-                        System.out.println("Program Title: " + data[0]);
-                        System.out.println("Difficulty Level: " + data[1]);
-                        System.out.println("Focus Area: " + data[2]);
-                        System.out.println("Schedule: " + data[3]);
+                        logger.info(String.format("%s %s", PROGRAM_TITLE, data[0]));
+                        logger.info("Difficulty Level: " + data[1]);
+                        logger.info("Focus Area: " + data[2]);
+                        logger.info("Schedule: " + data[3]);
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.severe("Error reading the programs file while viewing details: " + e.getMessage());
             }
         }
 
@@ -110,9 +111,9 @@ public class ProgramExploration {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("subscriptions.txt", true))) {
                 writer.write(clientId + "," + programName + ",Enrolled");
                 writer.newLine();
-                System.out.println("You have successfully enrolled in the program.");
+                logger.info("Client " + clientId + " has successfully enrolled in the program " + programName);
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.severe("Error enrolling in the program: " + e.getMessage());
             }
         }
 
@@ -122,26 +123,26 @@ public class ProgramExploration {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[0].equals(clientId)) {
-                        System.out.println("Program Name: " + data[1] + " - Status: " + data[2]);
+                        logger.info(String.format("Program Name: %s - Status: %s", data[1], data[2]));
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.severe("Error reading the subscriptions file: " + e.getMessage());
             }
         }
     }
 
     public void viewProgramSchedule(String programName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("programs.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data[0].equals(programName)) {
-                    System.out.println("Schedule for " + data[0] + ": " + data[3]);
+                    logger.info("Schedule for " + data[0] + ": " + data[3]);
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.severe("Error reading the programs file while viewing schedule: " + e.getMessage());
         }
     }
 }
