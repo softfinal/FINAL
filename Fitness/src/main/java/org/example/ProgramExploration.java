@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 
 public class ProgramExploration {
 
-    private static final String PROGRAM_TITLE = "Program Title: ";
+    private static final String S_S_DIFFICULTY_LEVEL_S_FOCUS_AREA_S = "%s %s, Difficulty Level: %s, Focus Area: %s";
+	private static final String PROGRAM_TITLE = "Program Title: ";
     private static final String PROGRAMS_TXT = "C:\\Users\\Hp Zbook\\git\\repository3\\Fitness\\target\\programs.txt";
     private static final Logger logger = Logger.getLogger(ProgramExploration.class.getName()); // Logger instance
 
@@ -60,7 +61,7 @@ public class ProgramExploration {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                logger.info(String.format(S_S_DIFFICULTY_LEVEL_S_FOCUS_AREA_S, PROGRAM_TITLE, data[0], data[1], data[2]));
             }
         } catch (IOException e) {
             logger.severe("Error reading the programs file: " + e.getMessage());
@@ -82,7 +83,7 @@ public class ProgramExploration {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[1].equals(difficultyLevel) && data[2].equals(focusArea)) {
-                        logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                        logger.info(String.format(S_S_DIFFICULTY_LEVEL_S_FOCUS_AREA_S, PROGRAM_TITLE, data[0], data[1], data[2]));
                     }
                 }
             } catch (IOException e) {
@@ -96,7 +97,7 @@ public class ProgramExploration {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[0].equals(programName)) {
-                        logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                        logger.info(String.format(S_S_DIFFICULTY_LEVEL_S_FOCUS_AREA_S, PROGRAM_TITLE, data[0], data[1], data[2]));
                         logger.info(String.format("Schedule: %s", data[3]));
                     }
                 }
