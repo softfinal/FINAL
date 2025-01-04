@@ -21,7 +21,6 @@ public class User {
 
     // Default constructor
     public User() {
-        // Adding a default user when the User object is created
         User.users1.add(new User("loaa", "123", "admin"));
     }
 
@@ -63,7 +62,7 @@ public class User {
             logged = string.equals(username) && string2.equals(password);
             setLogstate(logged);
 
-            // Only log the success if login was successful
+            // Only log if login was successful or failed
             if (logged) {
                 logger.info(String.format("Login successful for user: %s", username));
             } else {
@@ -81,10 +80,9 @@ public class User {
 
     // Method to add a user to the list of users if logged in
     public static void adduser(User l) {
-        // Only proceed if the current user is logged in
-        if (l.getLogstate()) {
+        // Only proceed if the user is logged in
+        if (l != null && l.getLogstate()) {
             users1.add(l);
-            // Log only if the user was successfully added
             logger.info(String.format("User '%s' added successfully.", l.getUsername()));
         } else {
             logger.warning("You should login first to add a user.");
@@ -93,10 +91,8 @@ public class User {
 
     // Method to check if a user is registered
     public boolean isRegest(String string) {
-        // Check if the username is not null before proceeding
         if (string != null) {
             boolean found = false;
-            // Only loop through the list if necessary
             for (User user : users1) {
                 if (user.getUsername().equals(string)) {
                     found = true;
@@ -104,7 +100,7 @@ public class User {
                 }
             }
 
-            // Log the result conditionally based on whether the user is found
+            // Log only if the result is meaningful
             if (found) {
                 logger.info(String.format("User '%s' is already registered.", string));
             } else {
@@ -132,4 +128,3 @@ public class User {
         this.address = string;
     }
 }
-
