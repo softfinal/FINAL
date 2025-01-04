@@ -51,7 +51,12 @@ public class ProgramExploration {
         }
 
         public void enroll() {
-            this.isFullyBooked = true; // After enrollment, mark as booked
+            if (!isFullyBooked) {
+                this.isFullyBooked = true; // Mark as booked only if not already booked
+                logger.info("Enrolled in program: " + name);
+            } else {
+                logger.warning("Program " + name + " is already fully booked.");
+            }
         }
 
         public String getProgramDetails() {
@@ -62,15 +67,19 @@ public class ProgramExploration {
     public void listAvailablePrograms() {
         try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
             String line;
+            boolean hasValidData = false;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                // Conditionally log only if the program has valid data
+                // Log only if the program data is valid
                 if (data.length >= 3 && data[0] != null && !data[0].isEmpty()) {
                     logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                    hasValidData = true;
                 } else {
-                    // Log a warning if data is missing or invalid
                     logger.warning("Program data is incomplete or invalid: " + line);
                 }
+            }
+            if (!hasValidData) {
+                logger.warning("No valid programs available to display.");
             }
         } catch (IOException e) {
             logger.severe("Error reading the programs file: " + e.getMessage());
@@ -88,13 +97,17 @@ public class ProgramExploration {
 
         public void filterPrograms(String difficultyLevel, String focusArea) {
             try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
+                boolean found = false;
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
-                    // Conditionally log filtered programs
                     if (data[1].equals(difficultyLevel) && data[2].equals(focusArea)) {
                         logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                        found = true;
                     }
+                }
+                if (!found) {
+                    logger.warning("No programs found for the specified criteria.");
                 }
             } catch (IOException e) {
                 logger.severe("Error reading the programs file: " + e.getMessage());
@@ -103,6 +116,7 @@ public class ProgramExploration {
 
         public void viewProgramDetails(String programName) {
             try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
+                boolean found = false;
                 String line;
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
@@ -111,7 +125,12 @@ public class ProgramExploration {
                         logger.info("Difficulty Level: " + data[1]);
                         logger.info("Focus Area: " + data[2]);
                         logger.info("Schedule: " + data[3]);
+                        found = true;
+                        break;
                     }
+                }
+                if (!found) {
+                    logger.warning("Program with name " + programName + " not found.");
                 }
             } catch (IOException e) {
                 logger.severe("Error reading the programs file: " + e.getMessage());
@@ -119,41 +138,64 @@ public class ProgramExploration {
         }
 
         public void enrollInProgram(String clientId, String programName) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("subscriptions.txt", true))) {
-                writer.write(clientId + "," + programName + ",Enrolled");
-                writer.newLine();
-                logger.info("You have successfully enrolled in the program.");
-            } catch (IOException e) {
-                logger.severe("Error enrolling in the program: " + e.getMessage());
+            if (clientId != null && !clientId.isEmpty() && programName != null && !programName.isEmpty()) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("subscriptions.txt", true))) {
+                    writer.write(clientId + "," + programName + ",Enrolled");
+                    writer.newLine();
+                    logger.info("Successfully enrolled in program: " + programName);
+                } catch (IOException e) {
+                    logger.severe("Error enrolling in the program: " + e.getMessage());
+                }
+            } else {
+                logger.warning("Client ID or Program Name is invalid, cannot enroll.");
             }
         }
 
         public void viewEnrolledPrograms(String clientId) {
-            try (BufferedReader reader = new BufferedReader(new FileReader("subscriptions.txt"))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] data = line.split(",");
-                    if (data[0].equals(clientId)) {
-                        logger.info("Program Name: " + data[1] + " - Status: " + data[2]);
+            if (clientId != null && !clientId.isEmpty()) {
+                try (BufferedReader reader = new BufferedReader(new FileReader("subscriptions.txt"))) {
+                    boolean found = false;
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        String[] data = line.split(",");
+                        if (data[0].equals(clientId)) {
+                            logger.info("Program Name: " + data[1] + " - Status: " + data[2]);
+                            found = true;
+                        }
                     }
+                    if (!found) {
+                        logger.warning("No enrolled programs found for client: " + clientId);
+                    }
+                } catch (IOException e) {
+                    logger.severe("Error reading enrolled programs: " + e.getMessage());
                 }
-            } catch (IOException e) {
-                logger.severe("Error reading enrolled programs: " + e.getMessage());
+            } else {
+                logger.warning("Invalid client ID provided.");
             }
         }
     }
 
     public void viewProgramSchedule(String programName) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data[0].equals(programName)) {
-                    logger.info(String.format("Schedule for %s: %s", data[0], data[3]));
+        if (programName != null && !programName.isEmpty()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(PROGRAMS_TXT))) {
+                boolean found = false;
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] data = line.split(",");
+                    if (data[0].equals(programName)) {
+                        logger.info(String.format("Schedule for %s: %s", data[0], data[3]));
+                        found = true;
+                        break;
+                    }
                 }
+                if (!found) {
+                    logger.warning("Schedule not found for program: " + programName);
+                }
+            } catch (IOException e) {
+                logger.severe("Error reading the programs file: " + e.getMessage());
             }
-        } catch (IOException e) {
-            logger.severe("Error reading the programs file: " + e.getMessage());
+        } else {
+            logger.warning("Invalid program name provided.");
         }
     }
 }
