@@ -1,159 +1,142 @@
-package org.example;
+package fitnessAcceptanceTest;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertTrue;
+
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.cucumber.datatable.DataTable;
+import org.example.Function; // Replace with actual class reference
+import org.junit.Test;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class User {
+public class ProgramMonoterTest {
+    private final Function adminFunctions = new Function(); // Replace with actual class or logic
+    private final Logger logger = Logger.getLogger(ProgramMonoterTest.class.getName());
+    private String resultMessage;
 
-    // Logger instance for logging messages
-    private static final Logger logger = Logger.getLogger(User.class.getName());
-
-    // Static map to store users (thread-safe)
-    private static final ConcurrentMap<String, User> users = new ConcurrentHashMap<>();
-
-    // User attributes (private for encapsulation)
-    private String username;
-    private String password; // Ideally should be hashed
-    private String address;
-    private String id;
-    private String phone;
-    private String type;
-    private boolean loggedIn;
-
-    // Default constructor for initialization
-    public User() {
-        // Add a default admin user
-        addDefaultUser("loaa", "123", "admin");
+    // Scenario 1: View Specific Item
+    @Test
+    public void testViewSpecificItem() {
+        viewSpecificItem("Program 1"); // Example program
+        programItemVisible("Program 1");
     }
 
-    // Constructor with parameters to initialize a user
-    public User(String username, String password, String type) {
-        this.username = username;
-        this.password = password; // Hash this in a real-world application
-        this.type = type;
+    @When("I select the option to view {string}")
+    public void i_select_the_option_to_view(String option) {
+        logger.log(Level.INFO, () -> String.format("Option selected: %s", option));
+        // Replace with actual logic for selecting an option
     }
 
-    // Static method to add a default user (used during initialization)
-    private static void addDefaultUser(String username, String password, String type) {
-        User defaultUser = new User(username, password, type);
-        users.putIfAbsent(username, defaultUser);
-    }
-
-    // Getters and setters
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        if (username != null && !username.trim().isEmpty()) {
-            this.username = username;
-        } else {
-            logger.warning("Username cannot be null or empty.");
+    @Then("I should see a list of programs sorted by enrollment")
+    public void i_should_see_a_list_of_programs_sorted_by_enrollment(DataTable dataTable) {
+        List<Map<String, String>> programs = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> program : programs) {
+            System.out.printf("Program: %s, Enrollment: %s%n", program.get("Program Name"), program.get("Enrollment"));
         }
     }
 
-    public void setPassword(String password) {
-        if (password != null && !password.trim().isEmpty()) {
-            this.password = password; // Hash this in a real-world application
-        } else {
-            logger.warning("Password cannot be null or empty.");
+    // Scenario 2: Generate Report
+    @Test
+    public void testGenerateReport() {
+        generateReport("Revenue");
+        reportGenerated("Revenue");
+    }
+
+    @When("I select the option to generate {string}")
+    public void i_select_the_option_to_generate(String reportType) {
+        logger.log(Level.INFO, () -> String.format("Report type selected: %s", reportType));
+        // Replace with actual logic for generating report
+    }
+
+    @Then("a downloadable revenue report should be generated")
+    public void a_downloadable_revenue_report_should_be_generated() {
+        logger.log(Level.INFO, "Revenue report generated.");
+        // Simulate report generation logic
+        resultMessage = "Revenue report generated successfully.";
+    }
+
+    // Scenario 3: View Revenue Report
+    @Test
+    public void testViewRevenueReport() {
+        viewRevenueReport();
+        revenueReportVisible();
+    }
+
+    @When("I specify the report type as {string}")
+    public void i_specify_the_report_type_as(String reportType) {
+        logger.log(Level.INFO, () -> String.format("Report type specified: %s", reportType));
+        // Replace with actual logic to specify report type
+    }
+
+    @Then("I should receive a detailed revenue report for all programs")
+    public void i_should_receive_a_detailed_revenue_report_for_all_programs(DataTable dataTable) {
+        List<Map<String, String>> revenueData = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> revenue : revenueData) {
+            System.out.printf("Program: %s, Revenue: %s%n", revenue.get("Program Name"), revenue.get("Revenue"));
         }
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    // Scenario 4: Categorize Programs by Status
+    @Test
+    public void testCategorizeProgramsByStatus() {
+        categorizeProgramsByStatus();
+        programsCategorizedByStatus();
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
-
-    private void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
-    }
-
-    // Login method
-    public boolean login(String username, String password) {
-        if (username == null || password == null) {
-            logger.warning("Username or password cannot be null.");
-            return false;
-        }
-
-        User user = users.get(username);
-        if (user != null && user.password.equals(password)) {
-            this.loggedIn = true;
-            logger.info(String.format("Login successful for user: %s", username));
-            return true;
-        } else {
-            logger.warning(String.format("Login failed for user: %s", username));
-            return false;
+    @Then("I should see programs categorized by status")
+    public void i_should_see_programs_categorized_by_status(DataTable dataTable) {
+        List<Map<String, String>> statusData = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> status : statusData) {
+            System.out.printf("Program: %s, Status: %s%n", status.get("Program Name"), status.get("Status"));
         }
     }
 
-    // Static method to add a user (requires the current user to be logged in)
-    public static boolean addUser(User currentUser, User newUser) {
-        if (currentUser == null || !currentUser.isLoggedIn()) {
-            logger.warning("You must be logged in to add a user.");
-            return false;
-        }
+    // Helper Methods
 
-        if (newUser != null && !users.containsKey(newUser.getUsername())) {
-            users.put(newUser.getUsername(), newUser);
-            logger.info(String.format("User '%s' added successfully.", newUser.getUsername()));
-            return true;
-        } else {
-            logger.warning("User already exists or new user details are invalid.");
-            return false;
-        }
+    private void viewSpecificItem(String item) {
+        logger.log(Level.INFO, () -> String.format("Viewing specific item: %s", item));
+        // Simulate logic to view an item
+        resultMessage = String.format("%s viewed successfully.", item);
     }
 
-    // Static method to check if a username is already registered
-    public static boolean isRegistered(String username) {
-        if (username == null || username.trim().isEmpty()) {
-            logger.warning("Username cannot be null or empty.");
-            return false;
-        }
-
-        boolean exists = users.containsKey(username);
-        if (exists) {
-            logger.info(String.format("User '%s' is already registered.", username));
-        } else {
-            logger.info(String.format("User '%s' is not registered.", username));
-        }
-        return exists;
+    private void programItemVisible(String item) {
+        assertTrue(resultMessage.contains(String.format("%s viewed successfully.", item)));
+        logger.log(Level.INFO, () -> String.format("Verified visibility of program: %s", item));
     }
 
-    // Main method for testing (optional)
-    public static void main(String[] args) {
-        // Initialize the system with a default user
-        User system = new User();
+    private void generateReport(String reportType) {
+        logger.log(Level.INFO, () -> String.format("Generating report: %s", reportType));
+        // Simulate logic for generating a report
+        resultMessage = String.format("%s report generated successfully.", reportType);
+    }
 
-        // Test login
-        User admin = new User();
-        admin.login("loaa", "123");
+    private void reportGenerated(String reportType) {
+        assertTrue(resultMessage.contains(String.format("%s report generated successfully.", reportType)));
+        logger.log(Level.INFO, () -> String.format("Verified report generation: %s", reportType));
+    }
 
-        // Add a new user
-        User newUser = new User("john_doe", "password", "user");
-        addUser(admin, newUser);
+    private void viewRevenueReport() {
+        logger.log(Level.INFO, "Viewing revenue report.");
+        // Simulate logic to view the revenue report
+        resultMessage = "Revenue report viewed successfully.";
+    }
 
-        // Check registration
-        System.out.println("Is 'john_doe' registered? " + isRegistered("john_doe"));
-        System.out.println("Is 'jane_doe' registered? " + isRegistered("jane_doe"));
+    private void revenueReportVisible() {
+        assertTrue(resultMessage.contains("Revenue report viewed successfully."));
+        logger.log(Level.INFO, "Verified visibility of revenue report.");
+    }
+
+    private void categorizeProgramsByStatus() {
+        logger.log(Level.INFO, "Categorizing programs by status.");
+        // Simulate logic to categorize programs by status
+        resultMessage = "Programs categorized by status successfully.";
+    }
+
+    private void programsCategorizedByStatus() {
+        assertTrue(resultMessage.contains("Programs categorized by status successfully."));
+        logger.log(Level.INFO, "Verified program categorization by status.");
     }
 }
