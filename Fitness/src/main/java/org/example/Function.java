@@ -930,156 +930,173 @@ public class Function {
 
 
  //Wellness Content
+    public void deleteContent(String contentId, String filePath) {
+        List<String> updatedContent = new ArrayList<>();
+        boolean contentFound = false;
 
-	private void approveWellnessContent() throws IOException {
-	    printing.printSomething("Approving wellness articles, tips, or recipes...");
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (!fields[0].equals(contentId)) {
+                    updatedContent.add(line); // Retain non-matching lines
+                } else {
+                    contentFound = true; // Mark that the content was found
+                }
+            }
+        } catch (IOException e) {
+            printing.printError(ERROR_READING_FILE + e.getMessage());
+            return;
+        }
 
-	    // Path to wellness content file
-	    String wellnessContentFilePath = C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_WELLNESS_CONTENT_TXT;
+        if (!contentFound) {
+            printing.printSomething("Content ID " + contentId + NOT_FOUND);
+            return;
+        }
 
-	    // List pending wellness content from the file
-	    List<String[]> pendingContent = new ArrayList<>();
-	    try (BufferedReader reader = new BufferedReader(new FileReader(wellnessContentFilePath))) {
-	        String line;
-	        while ((line = reader.readLine()) != null) {
-	            String[] fields = line.split(",");
-	            if (fields.length >= 5 && "Pending".equalsIgnoreCase(fields[4].trim())) {
-	                pendingContent.add(fields);
-	            }
-	        }
-	    } catch (IOException e) {
-	        printing.printError("Error reading wellness content file: " + e.getMessage());
-	        return;
-	    }
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (String updatedContents : updatedContent) {
+                writer.write(updatedContents);
+                writer.newLine();
+            }
+            printing.printSomething("Content with ID " + contentId + " has been deleted successfully.");
+        } catch (IOException e) {
+            printing.printError(ERROR_WRITING_TO_FILE + e.getMessage());
+        }
+    }
+    public void approveWellnessContent() throws IOException {
+        printing.printSomething("Approving wellness articles, tips, or recipes...");
 
-	    // Check if there is any pending content
-	    if (pendingContent.isEmpty()) {
-	        printing.printSomething("No wellness content pending approval.");
-	        return;
-	    }
+        String wellnessContentFilePath = C_USERS_HP_ZBOOK_GIT_FITNES_FITNESS_TARGET_WELLNESS_CONTENT_TXT;
+        List<String[]> pendingContent = getPendingContent(wellnessContentFilePath);
 
-	    // Display the pending content in a table format
-	    printing.printSomething(MSG);
-	    printing.printSomething("|  ID    | Content Name          | Instructor Name     | Type (Article/Tip/Recipe)    |");
-	    printing.printSomething(MSG);
+        if (pendingContent.isEmpty()) {
+            printing.printSomething("No wellness content pending approval.");
+            return;
+        }
 
-	    for (String[] content : pendingContent) {
-	        // Assuming fields: [ID, Content Name, Instructor Name, Type, Approval Status]
-	        String contentId = content[0];
-	        String contentName = content[1];
-	        String instructorName = content[2];
-	        String type = content[3];
-	        printing.printSomething(String.format("| %-6s | %-21s | %-19s | %-28s |", 
-	            contentId, contentName, instructorName, type));
-	    }
+        displayPendingContent(pendingContent);
 
-	    printing.printSomething(MSG);
+        String contentIdToProcess = getContentIdToProcess();
+        if (contentIdToProcess == null) return;
 
-	    // Clear the buffer before reading content ID
-	    scanner.nextLine(); // Ensure previous input is cleared
+        String action = getApprovalAction();
+        if (action == null) return;
 
-	    // Ask for content ID to approve or reject
-	    printing.printSomething("\nEnter content ID to approve or reject (or type 'exit' to go back): ");
-	    String contentIdToProcess = scanner.nextLine().trim();
+        processContentApprovalOrRejection(wellnessContentFilePath, contentIdToProcess, action);
+    }
 
-	    if (contentIdToProcess.equalsIgnoreCase("exit")) {
-	        printing.printSomething(RETURNING_TO_PREVIOUS_MENU);
-	        return;
-	    }
+    private List<String[]> getPendingContent(String wellnessContentFilePath) throws IOException {
+        List<String[]> pendingContent = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(wellnessContentFilePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields.length >= 5 && "Pending".equalsIgnoreCase(fields[4].trim())) {
+                    pendingContent.add(fields);
+                }
+            }
+        } catch (IOException e) {
+            printing.printError("Error reading wellness content file: " + e.getMessage());
+        }
+        return pendingContent;
+    }
 
-	    // Ask for approval or rejection
-	    printing.printSomething("Enter 'approve' to approve or 'reject' to reject: ");
-	    String action = scanner.nextLine().trim().toLowerCase();
+    private void displayPendingContent(List<String[]> pendingContent) {
+        printing.printSomething(MSG);
+        printing.printSomething("|  ID    | Content Name          | Instructor Name     | Type (Article/Tip/Recipe)    |");
+        printing.printSomething(MSG);
 
-	    if (!action.equals(APPROVE) && !action.equals("reject")) {
-	        printing.printSomething("Invalid action. Returning to previous menu...");
-	        return;
-	    }
+        for (String[] content : pendingContent) {
+            String contentId = content[0];
+            String contentName = content[1];
+            String instructorName = content[2];
+            String type = content[3];
+            printing.printSomething(String.format("| %-6s | %-21s | %-19s | %-28s |",
+                contentId, contentName, instructorName, type));
+        }
 
-	    boolean contentFound = false;
-	    List<String[]> updatedContent = new ArrayList<>();
-	    try (BufferedReader reader = new BufferedReader(new FileReader(wellnessContentFilePath))) {
-	        String line;
-	        while ((line = reader.readLine()) != null) {
-	            String[] fields = line.split(",");
-	            if (fields[0].equals(contentIdToProcess)) {
-	                contentFound = true;
-	                if (action.equals(APPROVE)) {
-	                    fields[4] = APPROVED; // Update status to Approved
-	                } else {
-	                    deleteContent(contentIdToProcess, wellnessContentFilePath); // Delete rejected content
-	                    return;
-	                }
-	            }
-	            updatedContent.add(fields);
-	        }
+        printing.printSomething(MSG);
+    }
 
-	        // Rewrite the file with updated content
-	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(wellnessContentFilePath))) {
-	            for (String[] content : updatedContent) {
-	                writer.write(String.join(",", content));
-	                writer.newLine();
-	            }
-	        }
+    private String getContentIdToProcess() {
+        scanner.nextLine(); // Clear the buffer
+        printing.printSomething("\nEnter content ID to approve or reject (or type 'exit' to go back): ");
+        String contentIdToProcess = scanner.nextLine().trim();
 
-	    } catch (IOException e) {
-	        printing.printError("Error processing wellness content: " + e.getMessage());
-	        return;
-	    }
+        if (contentIdToProcess.equalsIgnoreCase("exit")) {
+            printing.printSomething(RETURNING_TO_PREVIOUS_MENU);
+            return null;
+        }
+        return contentIdToProcess;
+    }
 
-	    if (contentFound) {
-	        printing.printSomething("Content with ID " + contentIdToProcess + " has been " + (action.equals(APPROVE) ? "approved!" : "rejected and deleted!"));
-	    } else {
-	        printing.printSomething("Content ID " + contentIdToProcess + NOT_FOUND);
-	    }
-	}
-	public void deleteContent(String contentId, String filePath) {
-	    List<String> updatedContent = new ArrayList<>();
-	    boolean contentFound = false;
+    private String getApprovalAction() {
+        printing.printSomething("Enter 'approve' to approve or 'reject' to reject: ");
+        String action = scanner.nextLine().trim().toLowerCase();
 
-	    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-	        String line;
-	        while ((line = reader.readLine()) != null) {
-	            String[] fields = line.split(",");
-	            if (!fields[0].equals(contentId)) {
-	                updatedContent.add(line); // Retain non-matching lines
-	            } else {
-	                contentFound = true; // Mark that the content was found
-	            }
-	        }
-	    } catch (IOException e) {
-	        printing.printError(ERROR_READING_FILE + e.getMessage());
-	        return;
-	    }
+        if (!action.equals(APPROVE) && !action.equals("reject")) {
+            printing.printSomething("Invalid action. Returning to previous menu...");
+            return null;
+        }
+        return action;
+    }
 
-	    if (!contentFound) {
-	        printing.printSomething("Content ID " + contentId + NOT_FOUND);
-	        return;
-	    }
+    private void processContentApprovalOrRejection(String wellnessContentFilePath, String contentIdToProcess, String action) {
+        boolean contentFound = false;
+        List<String[]> updatedContent = new ArrayList<>();
 
-	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-	        for (String updatedContents : updatedContent) {
-	            writer.write(updatedContents);
-	            writer.newLine();
-	        }
-	        printing.printSomething("Content with ID " + contentId + " has been deleted successfully.");
-	    } catch (IOException e) {
-	        printing.printError(ERROR_WRITING_TO_FILE + e.getMessage());
-	    }
-	}
+        try (BufferedReader reader = new BufferedReader(new FileReader(wellnessContentFilePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields[0].equals(contentIdToProcess)) {
+                    contentFound = true;
+                    if (action.equals(APPROVE)) {
+                        fields[4] = APPROVED; // Update status to Approved
+                    } else {
+                        deleteContent(contentIdToProcess, wellnessContentFilePath); // Delete rejected content
+                        return;
+                    }
+                }
+                updatedContent.add(fields);
+            }
+
+            // Rewrite the file with updated content
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(wellnessContentFilePath))) {
+                for (String[] content : updatedContent) {
+                    writer.write(String.join(",", content));
+                    writer.newLine();
+                }
+            }
+
+        } catch (IOException e) {
+            printing.printError("Error processing wellness content: " + e.getMessage());
+            return;
+        }
+
+        if (contentFound) {
+            printing.printSomething("Content with ID " + contentIdToProcess + " has been " + (action.equals(APPROVE) ? "approved!" : "rejected and deleted!"));
+        } else {
+            printing.printSomething("Content ID " + contentIdToProcess + NOT_FOUND);
+        }
+    }
+
 
 //feedback 
 	private void handleFeedback() {
 	    try {
 	        while (true) {
 	        	
-	        	 printing.printSomething("""
-	                     ---- Feedback Management ----
-	                     | 1. Review and Respond       |
-	                     | 2. Back                     |
-	                     ------------------------------
-	                     Enter your choice:
-	                 """);
+	        				printing.printSomething("""
+	        					---- Feedback Management ----
+	        					| 1. Review and Respond       |
+	        					| 2. Back                     |
+	        					------------------------------
+	        					Enter your choice:
+	        				""");
+	        			
+
 
 	            int choice = getValidChoice(1, 2);
 	            switch (choice) {
