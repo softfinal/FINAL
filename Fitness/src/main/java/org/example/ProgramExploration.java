@@ -96,10 +96,8 @@ public class ProgramExploration {
                 while ((line = reader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data[0].equals(programName)) {
-                        logger.info(String.format("%s %s", PROGRAM_TITLE, data[0]));
-                        logger.info("Difficulty Level: " + data[1]);
-                        logger.info("Focus Area: " + data[2]);
-                        logger.info("Schedule: " + data[3]);
+                        logger.info(String.format("%s %s, Difficulty Level: %s, Focus Area: %s", PROGRAM_TITLE, data[0], data[1], data[2]));
+                        logger.info(String.format("Schedule: %s", data[3]));
                     }
                 }
             } catch (IOException e) {
@@ -111,7 +109,8 @@ public class ProgramExploration {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("subscriptions.txt", true))) {
                 writer.write(clientId + "," + programName + ",Enrolled");
                 writer.newLine();
-                logger.info("Client " + clientId + " has successfully enrolled in the program " + programName);
+                logger.info(String.format("Client %s has successfully enrolled in the program %s", clientId, programName));
+
             } catch (IOException e) {
                 logger.severe("Error enrolling in the program: " + e.getMessage());
             }
@@ -138,7 +137,8 @@ public class ProgramExploration {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data[0].equals(programName)) {
-                    logger.info("Schedule for " + data[0] + ": " + data[3]);
+                	logger.info(String.format("Schedule for %s: %s", data[0], data[3]));
+
                 }
             }
         } catch (IOException e) {
